@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Ease app</title>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+        <script>
+            
+            function sendEvent(){ //dispatch an Event to warn the plugin it has to connect to the website
+                var event = new CustomEvent("NewConnection",{}); //right now no parameters. Soon, all infos about user and targeted website
+                document.dispatchEvent(event);
+                console.log("event sent");
+            }
+            
+            function eventListener() { //listen to the plugin. When cookies are ready, open the website 
+                console.log("listening event");
+                document.addEventListener("CookiesReady", function(e){
+                    console.log('launching IESEG online');
+                    window.open("http://www.ieseg-online.com");
+                }, false); 
+            } 
+            
+        </script>
+        
+    </head>
+    <body onload="eventListener()">
+        <p>Welcome to Ease Benjamin !</p>
+        
+        <button id="button" onclick="sendEvent()">Connect to IESEG-Online</button>
+
+    </body>
+</html>
