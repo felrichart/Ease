@@ -29,7 +29,7 @@ io.sockets.on('connection', function (socket) {
     
     socket.on('getCookies', function (message) { //when a client ask for cookies
         
-        console.log('Client ask for cookies for IESEG-online, user: benjamin prigent');
+        console.log('Client ask for cookies for facebook');
         
         //The following function calls getPhantom to get cookies and then emit them to client
         phantom.getCookies(function(cookies){

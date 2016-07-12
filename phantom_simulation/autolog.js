@@ -6,9 +6,10 @@ var page = require('webpage').create();
 
 var cookies;    
 
-page.open("https://www.ieseg-online.com/login/index.php", function(status) {
+page.open("https://www.facebook.com/login.php", function(status) {
     
     if ( status === "success" ) {
+        
         
         //to display console message
         page.onConsoleMessage = function(msg) {
@@ -29,13 +30,13 @@ page.open("https://www.ieseg-online.com/login/index.php", function(status) {
         page.render("./screenshots/before_log.png"); //create a screenshot of the starting page (only usefull for dev)
 
         page.evaluate(function() {//this write on the page to connect user
-                    
-            document.querySelector("#username").value = "benjamin.prigent@ieseg.fr"; // #username is the selector of the field
+            
+            document.querySelector("#email").value = ""; // #username is the selector of the field
             console.log("Login submitted!");
-            document.querySelector("#password").value = "bw9m1xo"; // #password is the selector of the field
+            document.querySelector("#pass").value = ""; // #password is the selector of the field
             console.log("Psswrd submitted!");
             
-            document.querySelector("#login").submit();  // #login is the selector of the FORM
+            document.getElementById("loginbutton").click();  // now click the button // #login is the selector of the FORM
             console.log("clicked");
         });
                 

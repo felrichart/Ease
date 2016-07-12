@@ -8,12 +8,3 @@ document.addEventListener("NewConnection", function(e){
         console.log("request sent");
    });
 }, false);
-
-
-//this listen when background page send a message. Dispatch an event for ease web page to open the website
-chrome.runtime.onMessage.addListener(
-  function(request, sender, sendResponse) {
-    console.log("cookies are set, no error");
-    var event = new CustomEvent("CookiesReady",{});
-    document.dispatchEvent(event);
-});

@@ -7,27 +7,31 @@
 
         <script>
             
+            var win1;
+            
+            function test(){
+                
+                console.log(win1.document.cookie);
+                
+            }
+            
+            function onload(){
+                win1 = window.open('http://www.w3schools.com/','winname', 'width=200,height=200');
+            }
+            
             function sendEvent(){ //dispatch an Event to warn the plugin it has to connect to the website
                 var event = new CustomEvent("NewConnection",{}); //right now no parameters. Soon, all infos about user and targeted website
                 document.dispatchEvent(event);
                 console.log("event sent");
             }
             
-            function eventListener() { //listen to the plugin. When cookies are ready, open the website 
-                console.log("listening event");
-                document.addEventListener("CookiesReady", function(e){
-                    console.log('launching IESEG online');
-                    window.open("http://www.ieseg-online.com");
-                }, false); 
-            } 
-            
         </script>
         
     </head>
-    <body onload="eventListener()">
+    <body onload = onload()>
         <p>Welcome to Ease Benjamin !</p>
         
-        <button id="button" onclick="sendEvent()">Connect to IESEG-Online</button>
+        <button id="button" onclick="test()">LE GROS BOUTON</button>
 
     </body>
 </html>

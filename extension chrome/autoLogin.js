@@ -6,14 +6,20 @@ var socket = io.connect('http://localhost:8080/');
 //listen to content script for message
 chrome.runtime.onMessage.addListener(
   function(msg) {//right now no message. Soon user info and targeted website
-      console.log('i got the message, i must ask server cookies for ieseg-online, user: benjamin prigent');
+      console.log('i got the message, i must ask server cookies for facebook');
+      //test();
       getCookies();
       
 });
 
+function test(){
+    window.open('https://www.facebook.com');
+    chrome.tabs.highlight({'tabs':0});
+}
+
 //ask the server the cookies of the session
 function getCookies(){
-    console.log('i ask server cookies for ieseg-online, user: benjamin prigent');
+    console.log('i ask server cookies for facebook');
     socket.emit('getCookies', 'I want cookies ');
 }
 
@@ -29,20 +35,24 @@ function setCookies(cookies, callback) {
     console.log(cookies);
     
     if (cookies !== null){ 
-        
-        for(i in cookies) {
+        console.log(cookies.length);
+        var j = 0;
+        for(var i = 0;i<cookies.length-1;i++) {
             
             //modify slightly the cookie to match the chrome.cookies.set function
-            cookies[i].url = "https://www.ieseg-online.com";
+            cookies[i].url = "https://www.facebook.com";
             cookies[i].httpOnly = cookies[i].httponly;
+            cookies[i].expirationDate = cookies[i].expiry;
+            delete cookies[i].expiry;
+            delete cookies[i].expires;
             delete cookies[i].domain;
             delete cookies[i].httponly;
-            console.log(JSON.stringify(cookies[i]));
             
             //set cookies in chrome
             chrome.cookies.set(cookies[i],function(){
-                console.log('cookie ' + i + ' created successfully');
-                if (i==cookies.length - 1){ return callback(true); }//when all cookies are set, callback (function end)
+                j++;
+                console.log('cookie ' + j + ' created successfully');
+                if (j==cookies.length-1){ return callback(true); }//when all cookies are set, callback (function end)
             });
 
         }
@@ -57,12 +67,10 @@ function setCookies(cookies, callback) {
     
 }
 
-//when all cookies are set, send a message to content script to warn ease page
+//when all cookies are set, open the web page
 function end(msg){
     if(msg){
         console.log('all cookies are set');
-        chrome.tabs.query({url : 'http://localhost:8080/ease'}, function(tabs) {
-            chrome.tabs.sendMessage(tabs[0].id, {}, function(response) {console.log('open Ieseg online now');});
-        });
+        window.open('https://www.facebook.com');
     }
 }
