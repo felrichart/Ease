@@ -1,4 +1,5 @@
 <!doctype html>
+<!--
 <html>
     <head>
         <title>Ease app</title>
@@ -13,7 +14,6 @@
                 document.dispatchEvent(event);
                 console.log("event sent");
             }
-            
         </script>
         
     </head>
@@ -23,4 +23,25 @@
         <button id="button" onclick="sendEvent()">LE GROS BOUTON</button>
 
     </body>
+</html> -->
+
+<html>
+<head>
+    <title></title>
+    <style text="text/javascript">
+    body { padding:0px; margin:0px; }
+    .full { background-color: yellowgreen; width: 100%; height: 100%; }
+    .menu { height: 50px; width: 100%; background-color: black; position: fixed; }
+    .behindMenu { height: 50px; width: 100%; }
+    .logo {width: 100%; height: 150px;}
+    .content {background-color: yellow;}
+    </style>
+</head>
+<body>
+<div class="menu">Menu</div>
+<div class="behindMenu"></div>
+<div class="logo">Logo</div>
+<div class="full">Full div</div>
+<div class="content">The rest content</div>
+</body>
 </html>

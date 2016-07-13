@@ -9,7 +9,7 @@ chrome.runtime.onMessage.addListener(
 });
 
 function logUser(params){
-   chrome.tabs.create({"url":params.website}, function(tab){
+   chrome.tabs.create({"url":params.urlLogin}, function(tab){
         console.log(tab.id);
         chrome.tabs.executeScript(tab.id, {file:'fillin.js'},function(){
             chrome.tabs.sendMessage(tab.id, params, function(response) {});
