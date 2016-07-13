@@ -1,10 +1,10 @@
 //active when localhost:8080/ease is active
 
-console.log("i'm listening to Ease");
+console.log("Ease plugin : waiting for request");
 
 //this listen when the event 'NewConnection' is dispatched by localhost:8080/ease
-document.addEventListener("NewConnection", function(e){
-    chrome.runtime.sendMessage('', function(response) {//send a message to the background. Right now no message. Soon user infos and targeted website.
-        console.log("request sent");
+document.addEventListener("NewConnection", function(event){
+    chrome.runtime.sendMessage(event.detail, function(response) {
+        console.log("Ease plugin : request for connection to " + event.detail.website + " sent");
    });
 }, false);

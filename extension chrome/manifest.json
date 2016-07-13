@@ -12,17 +12,15 @@
       
 "content_scripts": [
     {
-      "matches": ["http://localhost:8080/ease"],
-      "js": ["contentScriptEase.js"]//this content script is executed when opening localhost:8080/ease
+      "matches": ["<all_urls>"],
+      "js": ["contentScriptEase.js","fillin.js"]//this content script is executed when opening localhost:8080/ease
     }
   ],
-    
-//"content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
     
 "background":{
     "page" : "autoLogin.html", //this page is launched in background when opening browser
     "persistent": false
 },
     
-"permissions": ["tabs","cookies","\u003Call_urls\u003E"]
+"permissions": ["tabs","cookies","\u003Call_urls\u003E","http://*/*", "https://*/*"]
 }

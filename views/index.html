@@ -7,20 +7,9 @@
 
         <script>
             
-            var win1;
-            
-            function test(){
-                
-                console.log(win1.document.cookie);
-                
-            }
-            
-            function onload(){
-                win1 = window.open('http://www.w3schools.com/','winname', 'width=200,height=200');
-            }
-            
             function sendEvent(){ //dispatch an Event to warn the plugin it has to connect to the website
-                var event = new CustomEvent("NewConnection",{}); //right now no parameters. Soon, all infos about user and targeted website
+                var event = new CustomEvent("NewConnection",{'detail':{"user":'ntm@gmail.com', "pass":'xxxxx', "website":"https://www.facebook.com/login.php", "userField":"email", "passField":"pass", "button":'loginbutton'}});
+                console.log(event.detail);
                 document.dispatchEvent(event);
                 console.log("event sent");
             }
@@ -28,10 +17,10 @@
         </script>
         
     </head>
-    <body onload = onload()>
+    <body>
         <p>Welcome to Ease Benjamin !</p>
         
-        <button id="button" onclick="test()">LE GROS BOUTON</button>
+        <button id="button" onclick="sendEvent()">LE GROS BOUTON</button>
 
     </body>
 </html>
