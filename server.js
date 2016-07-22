@@ -17,6 +17,27 @@ app.get('/ease', function (req, res) {
     res.sendFile(__dirname+'/views/index.html');
 });
 
+app.get('/ease/connectionFacebook.json', function(req,res){
+    res.sendFile(__dirname+'/connectionJson/facebook.json');
+});
+
+app.get('/ease/connectionO365Mail.json', function(req,res){
+    res.sendFile(__dirname+'/connectionJson/office365mail.json');
+});
+
+app.get('/ease/connectionIO.json', function(req,res){
+    res.sendFile(__dirname+'/connectionJson/iesegonline.json');
+});
+
+
+app.get('/ease/connectionTwitter.json', function(req,res){
+    res.sendFile(__dirname+'/connectionJson/twitter.json');
+});
+
+app.get('/ease/connection.json', function (req, res) {
+    res.sendFile(__dirname+'/views/connection.json');
+});
+
 http.listen(8080, "127.0.0.1");
 
 

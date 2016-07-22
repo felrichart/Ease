@@ -1,0 +1,63 @@
+{
+    "website":"facebook",
+    
+    "elements":{
+        
+        "userField":{
+            "id":"email"
+        },
+        "passField":{
+            "id":"pass"
+        },
+        "logInButton":{
+            "id":"loginbutton"
+        }
+    },
+    
+    "connectionSteps":[
+        {
+            "action":"goTo",
+            "url":"https://www.facebook.com/login"
+        },
+        
+        {
+            "action":"catchFail",
+            "if":"redirected",
+            "noFailUrl":"https://www.facebook.com/login",
+            "actionsIfFail":[],
+            "send":"alreadyConnected"
+        },
+        
+        {
+            "action":"do",
+            "elements":[
+                {
+                    "name":"userField",
+                    "action":"fill",
+                    "value":"user"
+                },
+                {
+                    "name":"passField",
+                    "action":"fill",
+                    "value":"pass"
+                },
+                {
+                    "name":"logInButton",
+                    "action":"click"
+                }
+            ]
+        },
+        
+        {
+            "action":"nextPage"
+        },
+        
+        {
+            "action":"catchFail",
+            "if":"redirected",
+            "noFailUrl":"https://www.facebook.com",
+            "actionsIfFail":[],
+            "send":"wrongPassword"
+        }
+    ]
+}

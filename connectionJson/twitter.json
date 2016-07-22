@@ -1,0 +1,49 @@
+{
+    "website":"twitter",
+    
+    "elements":{
+        
+        "userField":{
+            "tagName":"input",
+            "name":"session[username_or_email]",
+            "className":"js-username-field email-input js-initial-focus"
+        },
+        "passField":{
+            "tagName":"input",
+            "name":"session[password]",
+            "className":"js-password-field"
+        },
+        "buttonLogIn":{
+            "tagName":"button",
+            "type":"submit",
+            "className":"submit btn primary-btn"
+        }
+    },
+    
+    "connectionSteps":[
+        {
+            "action":"goTo",
+            "url":"https://twitter.com/login/"
+        },
+        
+        {
+            "action":"do",
+            "elements":[
+                {
+                    "name":"userField",
+                    "action":"fill",
+                    "value":"user"
+                },
+                {
+                    "name":"passField",
+                    "action":"fill",
+                    "value":"pass"
+                },
+                {
+                    "name":"buttonLogIn",
+                    "action":"click"
+                }
+            ]
+        }
+    ]
+}

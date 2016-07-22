@@ -1,0 +1,49 @@
+{
+        "website":"Office 365 mail",
+    
+        "elements":{
+            "userField":{
+              "id":"cred_userid_inputtext"  
+            },
+            "passField":{
+                "id":"cred_password_inputtext"
+            },
+            "buttonLogIn":{
+                "id":"cred_sign_in_button"
+            }
+            
+        },
+    
+        "connectionSteps":[
+        
+            {
+                "action":"goTo",
+                "url":"https://login.microsoftonline.com/"        
+            },
+        
+            {
+                "action":"do",
+                
+                "elements":[
+                    {
+                        "name":"userField",
+                        "action":"fill",
+                        "value":"user"
+                    },
+                    {
+                        "name":"passField",
+                        "action":"fill",
+                        "value":"pass"
+                    },
+                    {
+                        "name":"buttonLogIn",
+                        "action":"click"
+                    }
+                ]
+            },
+        
+            {
+                "action":"nextPage"
+            }
+        ]
+    }

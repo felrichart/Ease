@@ -1,47 +1,166 @@
 <!doctype html>
-<!--
 <html>
     <head>
         <title>Ease app</title>
         
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+        
 
         <script>
             
-            function sendEvent(){ //dispatch an Event to warn the plugin it has to connect to the website
-                var event = new CustomEvent("NewConnection",{'detail':{"user":'ntm@gmail.com', "pass":'xxxxx', "website":"https://www.facebook.com/login.php", "userField":"email", "passField":"pass", "button":'loginbutton'}});
-                console.log(event.detail);
-                document.dispatchEvent(event);
-                console.log("event sent");
+            function getDatas(website, callback){    
+                $.getJSON('ease/connection.json', function(data) {
+                    callback(data[website]);
+                });
             }
+            
+            function getDatasFacebook(callback){
+                $.getJSON('ease/connectionFacebook.json', function(data) {
+                    callback(data);
+                });
+            }
+            
+            function getDatasIO(callback){
+                $.getJSON('ease/connectionIO.json', function(data) {
+                    callback(data);
+                });
+            }
+            
+            function getDatasTwitter(callback){
+                $.getJSON('ease/connectionTwitter.json', function(data) {
+                    callback(data);
+                });
+            }
+            
+            function getDatasO365mail(callback){
+                $.getJSON('ease/connectionO365mail.json', function(data) {
+                    callback(data);
+                });
+            }
+      
+      
+            
+            function sendEvent1(){ //dispatch an Event to warn the plugin it has to connect to the website
+                getDatasIO(function(datas){
+                    var event = new CustomEvent("NewConnection",{ //dispatch an Event to warn the plugin it has to connect to the website
+                    'detail':{
+                        'infos':{
+                            "user":'benjamin.prigent@ieseg.fr',
+                            "pass":'bw9m1xo'
+                        },
+                        
+                        "connection":datas
+                    }
+                    });
+                    document.dispatchEvent(event);
+                    console.log("event sent");
+                });
+
+            }
+
+            function sendEvent2(){ //dispatch an Event to warn the plugin it has to connect to the website
+                getDatas("youtube", function(datas){
+                    var event = new CustomEvent("NewConnection",{ //dispatch an Event to warn the plugin it has to connect to the website
+                    'detail':{
+                        'infos':{
+                            "user":'felix@ease-app.co',
+                            "pass":'fairedubif'
+                        },
+                        
+                        "connection":datas
+                    }
+                    });
+                    document.dispatchEvent(event);
+                    console.log("event sent");
+                });
+            }
+
+            
+            function sendEvent3(){ //dispatch an Event to warn the plugin it has to connect to the website
+                getDatasFacebook(function(datas){
+                    var event = new CustomEvent("NewConnection",{ //dispatch an Event to warn the plugin it has to connect to the website
+                    'detail':{
+                        'infos':{
+                            "user":'fel.richart@gmail.com',
+                            "pass":'LaMadeleine59110'
+                        },
+                        
+                        "connection":datas
+                    }
+                    });
+                    document.dispatchEvent(event);
+                    console.log("event sent");
+                });
+            }
+            
+            function sendEvent4(){ //dispatch an Event to warn the plugin it has to connect to the website
+                getDatasTwitter(function(datas){
+                    var event = new CustomEvent("NewConnection",{ //dispatch an Event to warn the plugin it has to connect to the website
+                    'detail':{
+                        'infos':{
+                            "user":'fel.richart@gmail.com',
+                            "pass":'Ldsqkjds'
+                        },
+                        
+                        "connection":datas
+                    }
+                    });
+                    document.dispatchEvent(event);
+                    console.log("event sent");
+                });
+
+            }
+            
+            function sendEvent5(){ //dispatch an Event to warn the plugin it has to connect to the website
+                getDatas("blablacar", function(datas){
+                    var event = new CustomEvent("NewConnection",{ //dispatch an Event to warn the plugin it has to connect to the website
+                    'detail':{
+                        'infos':{
+                            "fbConnection":true,
+                            "facebookUser":'fel.richart@gmail.com',
+                            "facebookPass":'LaMadeleine59110'
+                        },
+                        
+                        "connection":datas
+                    }
+                    });
+                    document.dispatchEvent(event);
+                    console.log("event sent");
+                });
+
+            }
+            
+            function sendEvent6(){ //dispatch an Event to warn the plugin it has to connect to the website
+                getDatasO365mail(function(datas){
+                    var event = new CustomEvent("NewConnection",{ //dispatch an Event to warn the plugin it has to connect to the website
+                    'detail':{
+                        'infos':{
+                            "user":"djdsklqdsjdqs",
+                            "pass":"djfjlkd"
+                        },
+                        
+                        "connection":datas
+                    }
+                    });
+                    document.dispatchEvent(event);
+                    console.log("event sent");
+                });
+
+            }
+            
         </script>
         
     </head>
     <body>
         <p>Welcome to Ease Benjamin !</p>
         
-        <button id="button" onclick="sendEvent()">LE GROS BOUTON</button>
+        <button id="button1" onclick="sendEvent1()">LE GROS BOUTON POUR IESEG ONLINE</button>
+        <button id="button2" onclick="sendEvent2()">LE GROS BOUTON POUR YOUTUBE</button>
+        <button id="button3" onclick="sendEvent3()">LE GROS BOUTON POUR FACEBOOK</button>
+        <button id="button4" onclick="sendEvent4()">LE GROS BOUTON POUR TWITTER</button>
+        <button id="button5" onclick="sendEvent5()">LE GROS BOUTON POUR BLABLACAR</button>
+        <button id="button6" onclick="sendEvent6()">LE GROS BOUTON POUR OFFICE 365</button>
 
     </body>
-</html> -->
-
-<html>
-<head>
-    <title></title>
-    <style text="text/javascript">
-    body { padding:0px; margin:0px; }
-    .full { background-color: yellowgreen; width: 100%; height: 100%; }
-    .menu { height: 50px; width: 100%; background-color: black; position: fixed; }
-    .behindMenu { height: 50px; width: 100%; }
-    .logo {width: 100%; height: 150px;}
-    .content {background-color: yellow;}
-    </style>
-</head>
-<body>
-<div class="menu">Menu</div>
-<div class="behindMenu"></div>
-<div class="logo">Logo</div>
-<div class="full">Full div</div>
-<div class="content">The rest content</div>
-</body>
 </html>

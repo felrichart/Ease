@@ -1,24 +1,28 @@
 {
-"manifest_version": 2, // necessary
+"manifest_version": 2,
     
 "name" :"ease chrome plugin",
-"version" :"0.0.0",
+"version" :"1.0.1",
 "description" :"premier plugin ease pour chrome",
     
+"icons": {
+    "128": "logo_128.png"
+},
+    
 "browser_action": {
-    "default_popup" :"popup.html", //launch popup.html when plugin is clicked
-    "default_icon": "logo.png"
+    "default_popup" :"popup.html",
+    "default_icon": "logo_296.png"
 },
       
 "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["contentScriptEase.js","fillin.js"]//this content script is executed when opening localhost:8080/ease
+      "js": ["contentScriptEase.js"]
     }
   ],
     
 "background":{
-    "page" : "autoLogin.html", //this page is launched in background when opening browser
+    "page" : "autoLogin.html",
     "persistent": false
 },
     
