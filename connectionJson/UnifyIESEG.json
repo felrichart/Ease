@@ -9,26 +9,14 @@
     "elements":{
         
         "userField":{
-            "id"="txtUserName"
+            "id":"txtUserName"
         },
         "passField":{
-            "id"="txtPassword"
+            "id":"txtPassword"
         },
         "buttonLogIn":{
-            id="SubmitButton"
-        },
-        "userFbField":{
-            "id":"email"
-        },
-        "passFbField":{
-            "id":"pass"
-        },
-        "logInButtonFB":{
-            "id":"loginbutton"
+            "id":"SubmitButton"
         }
         
     }
 }
-
-
-http://unify.ieseg.fr
