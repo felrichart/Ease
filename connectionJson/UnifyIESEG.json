@@ -1,0 +1,34 @@
+
+{
+    "website":"unify.ieseg",
+    
+    "urls":{
+        "login":"http://unify.ieseg.fr",
+    },
+    
+    "elements":{
+        
+        "userField":{
+            "id"="txtUserName"
+        },
+        "passField":{
+            "id"="txtPassword"
+        },
+        "buttonLogIn":{
+            id="SubmitButton"
+        },
+        "userFbField":{
+            "id":"email"
+        },
+        "passFbField":{
+            "id":"pass"
+        },
+        "logInButtonFB":{
+            "id":"loginbutton"
+        }
+        
+    }
+}
+
+
+http://unify.ieseg.fr
