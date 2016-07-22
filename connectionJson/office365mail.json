@@ -1,6 +1,10 @@
 {
         "website":"Office 365 mail",
     
+        "urls":{
+            "login":"https://login.microsoftonline.com/" 
+        },
+    
         "elements":{
             "userField":{
               "id":"cred_userid_inputtext"  

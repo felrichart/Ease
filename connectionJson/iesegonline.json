@@ -1,6 +1,10 @@
 {
         "website":"IESEG Online",
     
+        "urls":{
+            "login":"http://www.ieseg-online.com/login/index.php"
+        },
+    
         "elements":{
             "userField":{
               "id":"username"  

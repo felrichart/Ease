@@ -1,6 +1,10 @@
 {
     "website":"twitter",
     
+    "urls":{
+        "login":"https://twitter.com/login/"
+    },
+    
     "elements":{
         
         "userField":{

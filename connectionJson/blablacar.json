@@ -1,0 +1,38 @@
+{
+    "website":"blablacar",
+    
+    "urls":{
+        "login":"https://www.blablacar.fr/identification",
+        "loginFacebook":"https://www.blablacar.fr/connect/facebook"
+    },
+    
+    "elements":{
+        
+        "userField":{
+            "tagName":"input",
+            "name":"_username",
+            "className":"login-email registration-email"
+        },
+        "passField":{
+            "tagName":"input",
+            "name":"_password",
+            "className":"login-pass registration-password"
+        },
+        "buttonLogIn":{
+            "tagName":"button",
+            "type":"submit",
+            "name":"_submit",
+            "className":"btn-validation btn-large full-width apply-btn-loader"
+        },
+        "userFbField":{
+            "id":"email"
+        },
+        "passFbField":{
+            "id":"pass"
+        },
+        "logInButtonFB":{
+            "id":"loginbutton"
+        }
+        
+    }
+}

@@ -1,6 +1,10 @@
 {
     "website":"facebook",
     
+    "urls":{
+        "login":"https://www.facebook.com/login"
+    },
+    
     "elements":{
         
         "userField":{
