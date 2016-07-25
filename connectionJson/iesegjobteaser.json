@@ -1,1 +1,22 @@
-https://ieseg.jobteaser.com/
+
+{
+    "website":"job teaser ieseg",
+    
+    "urls":{
+        "login":"https://ieseg.jobteaser.com/",
+    },
+    
+    "elements":{
+        
+        "userField":{
+            "id":"txtUserName"
+        },
+        "passField":{
+            "id":"txtPassword"
+        },
+        "buttonLogIn":{
+            "id":"SubmitButton"
+        }
+        
+    }
+}
