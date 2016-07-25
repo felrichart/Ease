@@ -2,7 +2,7 @@
     "website":"youtube",
     
     "urls":{
-        "login":"https://accounts.google.com/ServiceLogin?sacu=1&continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26feature%3Dsign_in_button%26hl%3Dfr%26next%3D%252F&hl=fr&service=youtube#identifier"
+        "login":"https://accounts.google.com/AddSession?sacu=1&continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26feature%3Dsign_in_button%26hl%3Dfr%26next%3D%252F&hl=fr&service=youtube#identifier"
     },
     
     "elements":{
