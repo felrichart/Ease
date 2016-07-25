@@ -1,0 +1,25 @@
+
+{
+    "website":"la catho lille",
+    
+    "urls":{
+        "login":"https://sso.univ-catholille.fr/cas/login",
+    },
+    
+    "elements":{
+        
+        "userField":{
+            "id":"username"
+        },
+        "passField":{
+            "id":"password"
+        },
+        "buttonLogIn":{
+            "tagName":"input",
+            "className":"btn-submit",
+            "name":"submit",
+            "type":"submit"
+        }
+        
+    }
+}
