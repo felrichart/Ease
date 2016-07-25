@@ -1,0 +1,23 @@
+{
+    "website":"linkedin",
+    
+    "urls":{
+        "login":"https://www.linkedin.com/"
+    },
+    
+    "elements":{
+        
+        "userField":{
+            "id":"login-email"
+        },
+        "passField":{
+            "id":"login-password"
+        },
+        "buttonLogIn":{
+            "tagName":"input",
+            "type":"submit",
+            "name":"submit"
+        }
+        
+    }
+}
