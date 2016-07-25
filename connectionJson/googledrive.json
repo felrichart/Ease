@@ -2,7 +2,7 @@
     "website":"google drive",
     
     "urls":{
-        "login":"https://accounts.google.com/AddSession?sacu=1&continue=http%3A%2F%2Fdrive.google.com%2F%3Futm_source%3Dfr%26utm_medium%3Dbutton%26utm_campaign%3Dweb%26utm_content%3Dgotodrive%26usp%3Dgtd%26ltmpl%3Ddrive&service=wise#identifier"
+        "login":"https://accounts.google.com/ServiceLogin?sacu=1&continue=http%3A%2F%2Fdrive.google.com%2F%3Futm_source%3Dfr%26utm_medium%3Dbutton%26utm_campaign%3Dweb%26utm_content%3Dgotodrive%26usp%3Dgtd%26ltmpl%3Ddrive&service=wise#identifier"
     },
     
     "elements":{
