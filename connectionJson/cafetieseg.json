@@ -1,0 +1,27 @@
+{
+    "website":"cafet ieseg",
+    
+    "urls":{
+        "login":"http://cafet.ieseg.fr/index.php",
+    },
+    
+    "elements":{
+        
+        "userField":{
+            "id":"login"
+        },
+        "passField":{
+            "tagName":"input",
+            "name":"pass",
+            "type":"password",
+            "className":"text"
+        },
+        "buttonLogIn":{
+            "tagName":"input",
+            "type":"submit",
+            "name":"BouttonValider",
+            "className":"button_session"
+        }
+        
+    }
+}
