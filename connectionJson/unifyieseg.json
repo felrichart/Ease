@@ -2,32 +2,26 @@
     "website":"twitter",
     
     "urls":{
-        "login":"https://twitter.com/login/"
+        "login":"https://unify.ieseg.fr"
     },
     
     "elements":{
         
         "userField":{
-            "tagName":"input",
-            "name":"session[username_or_email]",
-            "className":"js-username-field email-input js-initial-focus"
+            "id":"txtUserName"
         },
         "passField":{
-            "tagName":"input",
-            "name":"session[password]",
-            "className":"js-password-field"
+            "id":"txtPassword"
         },
         "buttonLogIn":{
-            "tagName":"button",
-            "type":"submit",
-            "className":"submit btn primary-btn"
+            "id":"SubmitButton"
         }
     },
     
     "connectionSteps":[
         {
             "action":"goTo",
-            "url":"https://twitter.com/login"
+            "url":"https://unify.ieseg.fr"
         },
         
         {

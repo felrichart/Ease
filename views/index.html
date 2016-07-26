@@ -10,8 +10,8 @@
         <script>
             
             function getDatas(website, callback){    
-                $.getJSON('ease/connection.json', function(data) {
-                    callback(data[website]);
+                $.getJSON('ease/connection/'+website, function(data) {
+                    callback(data);
                 });
             }
             
@@ -42,7 +42,7 @@
       
             
             function sendEvent1(){ //dispatch an Event to warn the plugin it has to connect to the website
-                getDatasIO(function(datas){
+                getDatas("iesegonline",function(datas){
                     var event = new CustomEvent("NewConnection",{ //dispatch an Event to warn the plugin it has to connect to the website
                     'detail':{
                         'infos':{
@@ -78,7 +78,7 @@
 
             
             function sendEvent3(){ //dispatch an Event to warn the plugin it has to connect to the website
-                getDatasFacebook(function(datas){
+                getDatasFacebook("facebook",function(datas){
                     var event = new CustomEvent("NewConnection",{ //dispatch an Event to warn the plugin it has to connect to the website
                     'detail':{
                         'infos':{
@@ -95,7 +95,7 @@
             }
             
             function sendEvent4(){ //dispatch an Event to warn the plugin it has to connect to the website
-                getDatasTwitter(function(datas){
+                getDatasTwitter("twitter",function(datas){
                     var event = new CustomEvent("NewConnection",{ //dispatch an Event to warn the plugin it has to connect to the website
                     'detail':{
                         'infos':{
@@ -132,7 +132,7 @@
             }
             
             function sendEvent6(){ //dispatch an Event to warn the plugin it has to connect to the website
-                getDatasO365mail(function(datas){
+                getDatas("office365mail",function(datas){
                     var event = new CustomEvent("NewConnection",{ //dispatch an Event to warn the plugin it has to connect to the website
                     'detail':{
                         'infos':{
@@ -149,18 +149,39 @@
 
             }
             
+            function sendEvent(website){
+                getDatas(website,function(datas){
+                    var event = new CustomEvent("NewConnection",{ //dispatch an Event to warn the plugin it has to connect to the website
+                    'detail':{
+                        'infos':{
+                            "user":"benjamin.prigent@ieseg-online.fr",
+                            "pass":"bw9m1xo"
+                        },
+                        
+                        "connection":datas
+                    }
+                    });
+                    document.dispatchEvent(event);
+                    console.log("event sent");
+                });
+
+            }
+            
+            
         </script>
         
     </head>
     <body>
         <p>Welcome to Ease Benjamin !</p>
         
-        <button id="button1" onclick="sendEvent1()">LE GROS BOUTON POUR IESEG ONLINE</button>
-        <button id="button2" onclick="sendEvent2()">LE GROS BOUTON POUR YOUTUBE</button>
-        <button id="button3" onclick="sendEvent3()">LE GROS BOUTON POUR FACEBOOK</button>
-        <button id="button4" onclick="sendEvent4()">LE GROS BOUTON POUR TWITTER</button>
-        <button id="button5" onclick="sendEvent5()">LE GROS BOUTON POUR BLABLACAR</button>
-        <button id="button6" onclick="sendEvent6()">LE GROS BOUTON POUR OFFICE 365</button>
+        <button id="button1" onclick="sendEvent('iesegonline')">LE GROS BOUTON POUR IESEG ONLINE</button>
+        <button id="button2" onclick="sendEvent('youtube')">LE GROS BOUTON POUR YOUTUBE</button>
+        <button id="button3" onclick="sendEvent('facebook')">LE GROS BOUTON POUR FACEBOOK</button>
+        <button id="button4" onclick="sendEvent('twitter')">LE GROS BOUTON POUR TWITTER</button>
+        <button id="button5" onclick="sendEvent('blablacar')">LE GROS BOUTON POUR BLABLACAR</button>
+        <button id="button6" onclick="sendEvent('office365mail')">LE GROS BOUTON POUR OFFICE 365</button>
+        <button id="button7" onclick="sendEvent('iesegnetwork')">LE GROS BOUTON POUR IESEG NETWORK</button>
+        <button id="button8" onclick="sendEvent('unifyieseg')">LE GROS BOUTON POUR UNIFY</button>
 
     </body>
 </html>

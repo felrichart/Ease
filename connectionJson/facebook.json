@@ -25,11 +25,11 @@
         },
         
         {
-            "action":"catchFail",
-            "if":"redirected",
-            "noFailUrl":"https://www.facebook.com/login",
-            "actionsIfFail":[],
-            "send":"alreadyConnected"
+                "action":"catchFail",
+                "if":"missingElement",
+                "elementName":"passField",
+                "actionsIfFail":[],
+                "send":"alreadyConnected"
         },
         
         {
