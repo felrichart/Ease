@@ -1,9 +1,8 @@
-
 {
     "website":"unify ieseg",
     
     "urls":{
-        "login":"http://unify.ieseg.fr",
+        "login":"https://unify.ieseg.fr"
     },
     
     "elements":{
@@ -17,6 +16,46 @@
         "buttonLogIn":{
             "id":"SubmitButton"
         }
+    },
+    
+    "connectionSteps":[
+        {
+            "action":"goTo",
+            "url":"login"
+        },
         
-    }
+        {
+            "action":"do",
+            "elements":[
+                {
+                    "name":"userField",
+                    "action":"fill",
+                    "value":"user"
+                },
+                {
+                    "name":"passField",
+                    "action":"fill",
+                    "value":"pass"
+                },
+                {
+                    "name":"buttonLogIn",
+                    "action":"click"
+                }
+            ]
+        },
+        
+        {
+            "action":"nextPage",
+            "lastPage":true
+        },
+        
+        {
+            "action":"catchFail",
+            "if":"existingElement",
+            "elementName":"passField",
+            "actionsIfFail":[],
+            "send":"wrongPassword"
+        }
+    ]
 }
+
