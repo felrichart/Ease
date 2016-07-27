@@ -17,7 +17,7 @@
 "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["contentScriptEase.js"]
+      "js": ["contentScript.js"]
     }
   ],
     
@@ -26,5 +26,5 @@
     "persistent": false
 },
     
-"permissions": ["tabs","cookies","\u003Call_urls\u003E","http://*/*", "https://*/*"]
+"permissions": ["tabs","cookies","\u003Call_urls\u003E","http://*/*", "https://*/*","webNavigation"]
 }

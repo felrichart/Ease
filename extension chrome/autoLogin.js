@@ -2,9 +2,12 @@
 
 //listen to content script for message
 chrome.runtime.onMessage.addListener(
-  function(params) {
-      console.log("Ease plugin : request for connection to " + params.connection.website + " recievied"); 
-      logIn(params);
+  function(msg) {
+      if(msg.msg = "connectThisGuy"){
+          console.log("Ease plugin : request for connection to " + msg.params.connection.website + " recievied");
+          logIn(msg.params);
+      }
+      
       
 });
 
@@ -23,7 +26,8 @@ function nextStep(tab, steps, params, i, callback){
     
     if(steps[i]){
         var step = steps[i];
-        console.log("New action : " + step.action +", step number "+i);
+        if(tab) {console.log("New action : " + step.action +", step number "+i + ", tab id : "+ tab.id +", status : "+tab.status+ ", url : "+tab.url);}
+        else {console.log("New action : " + step.action +", step number "+i + ", no tab");}
         switch(step.action){
             case "goTo":
                 goTo(tab, step, params, function(newTab){
@@ -46,17 +50,26 @@ function nextStep(tab, steps, params, i, callback){
                 });
         }
     } else {
+        console.log("end connection");
+        endConnection(tab);
         callback();
     }
 }
 
+function endConnection(tab){
+    chrome.tabs.executeScript(tab.id, {"code":"document.getElementsByTagName('html')[0].style.visibility='visible';"}, function(){});
+    deleteOverlay(tab);
+}
 
 function goTo(tab, step, params, callback){
     
+    var url = params.connection.urls[step.url];
+    
     if(tab){
-        chrome.tabs.update(tab.id,{"url":step.url}, function(newTab){
-            
+        chrome.tabs.update(tab.id,{"url":url}, function(newTab){
+            insertOverlay(newTab);
             chrome.tabs.onUpdated.addListener(function whenTriggered(tabId, info, updatedTab){
+                insertOverlay(newTab);
                 if (info.status == "complete" && newTab.id==tabId) {
                     chrome.tabs.onUpdated.removeListener(whenTriggered);
                     
@@ -68,9 +81,13 @@ function goTo(tab, step, params, callback){
         });
         
     } else {
-        chrome.tabs.create({"url":step.url}, function(newTab){
+        chrome.tabs.create({"url":url}, function(newTab){
+            chrome.tabs.executeScript(newTab.id, {"code":"document.getElementsByTagName('html')[0].style.visibility ='hidden';","runAt":"document_start"}, function(){});
+            insertOverlay(newTab);
+            
             
             chrome.tabs.onUpdated.addListener(function whenTriggered(tabId, info, updatedTab){
+                insertOverlay(newTab);
                 if (info.status == "complete" && newTab.id==tabId) {
                     chrome.tabs.onUpdated.removeListener(whenTriggered);
 
@@ -87,122 +104,41 @@ function action(tab, step, params, callback){
     
 
         chrome.tabs.executeScript(tab.id, {file:'action.js'},function(){
-            chrome.tabs.sendMessage(tab.id, {"msg":"do","step":step,"elements":params.connection.elements,"infos":params.infos}, function(){
+            chrome.tabs.sendMessage(tab.id, {"msg":"do","step":step,"elements":params.connection.elements,"infos":params.infos}, function(response){
                 callback();
             }); 
         });
-    
+        
+       
 }
 
 function nextPage(tab, step, params, callback){
-    chrome.tabs.onUpdated.addListener(function whenTriggered(tabId, info, newTab){
-        info.status;
-        if (info.status == "complete" && tab.id==tabId) {
-            chrome.tabs.onUpdated.removeListener(whenTriggered);
+        
+        var timedOut = false;
+        var updated = false;
+        
+        chrome.tabs.onUpdated.addListener(function whenTriggered(tabId, info, newTab){
             
-            callback(newTab);
+            updated = true;
             
-        }
-    });
-}
-
-
-function catchFail(tab, fail, params, callback){
-    check(tab, fail, params, function(response){
-        if(response!="noFail") {handleFail(response, tab, fail, params, function(){});}
-        else{callback();}
-    });
+            if(timedOut){
+                chrome.tabs.onUpdated.removeListener(whenTriggered);
+            } else {                
+            
+                if(step.lastPage){deleteOverlay(newTab);}
+                else{insertOverlay(newTab);}
+                if (tab.id==tabId && info.status == "complete") {
+                    chrome.tabs.onUpdated.removeListener(whenTriggered);
+                    callback();
+                }
+            }
+        });
     
-}
-
-function check(tab, fail, params, callback){
-    console.log("Possible fail if : "+ fail.if);
-    switch(fail.if){
+         window.setTimeout(function(){
+            console.log("time out");
+            if(!updated){timedOut = true; callback();}
             
-        case "redirected":
-            checkRedirected(tab, fail, function(failed){
-                if(failed){
-                    nextStep(tab, fail.actionsIfFail, params, 0, function(){
-                        callback(fail.send);
-                    });
-                    
-                }
-                else {
-                    callback("noFail");
-                }
-            });
-            break;
-            
-        case "missingElement":
-            checkMissingElement(tab, fail, function(failed){
-                if(failed){
-                    nextStep(tab, fail.actionsIfFail, params, 0, function(){
-                        callback(fail.send);
-                    });
-                }
-                else {
-                    callback("noFail");
-                }
-            });
-            break;
-        case "existingFields":
-            checkExistingFields(tab, fail, function(failed){
-                if(failed){
-                    nextStep(tab, fail.actionsIfFail, params, 0, function(){
-                        callback(fail.send);
-                    });
-                }
-                else {
-                    callback("noFail");
-                }
-            });
-            break;
-    }
+        }, 3000);
 }
 
-function checkRedirected(tab, fail, callback){
-        if(fail.noFailUrl){
-            if(tab.url==fail.noFailUrl){
-                callback(false);
-            } else {
-                callback(true);
-            }
-        } else if(fail.failUrl){
-            if(tab.url==failUrl){
-                callback(true);
-            } else {
-                callback(false);
-            }
-        }
-    
-}
 
-function checkMissingElement(tab, fail, callback){
-    chrome.tabs.executeScript(tab.id, {file:'checkFields.js'},function(){
-        chrome.tabs.sendMessage(tab.id, {"msg":"checkFields","fields":fail.fields,"formAction":fail.formAction}, function(response){
-            if(response=="noFields"){
-                callback(true);
-            }
-            else {
-                callback(false);
-            }
-        }); 
-    });
-}
-
-function checkExistingFields(tab, fail, callback){
-    chrome.tabs.executeScript(tab.id, {file:'checkFields.js'},function(){
-        chrome.tabs.sendMessage(tab.id, {"msg":"checkFields","fields":fail.fields,"formActio":fail.formAction}, function(response){
-            if(response=="allFields"){
-                callback(true);
-            }
-            else {
-                callback(false);
-            }
-        }); 
-    });
-}
-
-function handleFail(response, tab, step, params, callback){
-    console.log("Fail : " + response);
-}//ToDo

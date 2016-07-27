@@ -1,53 +1,68 @@
 {
-        "website":"Office 365 mail",
+    "website":"Office 365 mail",
     
-        "urls":{
-            "login":"https://login.microsoftonline.com/" 
+    "urls":{
+        "login":"https://login.microsoftonline.com/" 
+    },
+    
+    "elements":{
+        "userField":{
+          "id":"cred_userid_inputtext"  
         },
-    
-        "elements":{
-            "userField":{
-              "id":"cred_userid_inputtext"  
-            },
-            "passField":{
-                "id":"cred_password_inputtext"
-            },
-            "buttonLogIn":{
-                "id":"cred_sign_in_button"
-            }
+        "passField":{
+            "id":"cred_password_inputtext"
+        },
+        "buttonLogIn":{
+            "id":"cred_sign_in_button"
+        }
             
-        },
+    },
     
-        "connectionSteps":[
+    "connectionSteps":[
+        {
+            "action":"goTo",
+            "url":"login"
+        },
         
-            {
-                "action":"goTo",
-                "url":"https://login.microsoftonline.com/"        
-            },
+        {
+                "action":"catchFail",
+                "if":"missingElement",
+                "elementName":"passField",
+                "actionsIfFail":[],
+                "send":"alreadyConnected"
+        },
         
-            {
-                "action":"do",
-                
-                "elements":[
-                    {
-                        "name":"userField",
-                        "action":"fill",
-                        "value":"user"
-                    },
-                    {
-                        "name":"passField",
-                        "action":"fill",
-                        "value":"pass"
-                    },
-                    {
-                        "name":"buttonLogIn",
-                        "action":"click"
-                    }
-                ]
-            },
+        {
+            "action":"do",
+            "elements":[
+                {
+                    "name":"userField",
+                    "action":"fill",
+                    "value":"user"
+                },
+                {
+                    "name":"passField",
+                    "action":"fill",
+                    "value":"pass"
+                },
+                {
+                    "name":"buttonLogIn",
+                    "action":"click"
+                }
+            ]
+        },
         
-            {
-                "action":"nextPage"
-            }
-        ]
-    }
+        {
+            "action":"nextPage",
+            "lastPage":true
+        },
+        
+        {
+            "action":"catchFail",
+            "if":"existingElement",
+            "elementName":"passField",
+            "actionsIfFail":[],
+            "send":"wrongPassword"
+        }
+    ]
+}

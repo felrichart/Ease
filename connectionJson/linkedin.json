@@ -1,21 +1,24 @@
 {
-    "website":"IESEG Online",
+    "website":"linkedin",
     
     "urls":{
-        "login":"http://www.ieseg-online.com/login/index.php"
+        "login":"https://www.linkedin.com/uas/login?goback=&trk=hb_signin"
     },
     
     "elements":{
+        
         "userField":{
-          "id":"username"  
+            "id":"session_key-login"
         },
         "passField":{
-            "id":"password"
+            "id":"session_password-login"
         },
         "buttonLogIn":{
-            "id":"loginbtn"
+            "tagName":"input",
+            "type":"submit",
+            "name":"signin"
         }
-            
+        
     },
     
     "connectionSteps":[

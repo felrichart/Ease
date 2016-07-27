@@ -1,21 +1,26 @@
+
 {
-    "website":"IESEG Online",
+    "website":"GMail",
     
     "urls":{
-        "login":"http://www.ieseg-online.com/login/index.php"
+      "login":"https://accounts.google.com/ServiceLogin?sacu=1&scc=1&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&osid=1&service=mail&ss=1&ltmpl=default&rm=false#identifier"
     },
     
     "elements":{
+        
         "userField":{
-          "id":"username"  
+            "id":"Email"
         },
         "passField":{
-            "id":"password"
+            "id":"Passwd"
+        },
+        "buttonFirstPage":{
+            "id":"next"
         },
         "buttonLogIn":{
-            "id":"loginbtn"
+                "id":"signIn"
         }
-            
+        
     },
     
     "connectionSteps":[

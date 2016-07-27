@@ -1,21 +1,28 @@
 {
-    "website":"IESEG Online",
+    "website":"cafet ieseg",
     
     "urls":{
-        "login":"http://www.ieseg-online.com/login/index.php"
+        "login":"http://cafet.ieseg.fr/index.php"
     },
     
     "elements":{
+        
         "userField":{
-          "id":"username"  
+            "id":"login"
         },
         "passField":{
-            "id":"password"
+            "tagName":"input",
+            "name":"pass",
+            "type":"password",
+            "className":"text"
         },
         "buttonLogIn":{
-            "id":"loginbtn"
+            "tagName":"input",
+            "type":"submit",
+            "name":"BouttonValider",
+            "className":"button_session"
         }
-            
+        
     },
     
     "connectionSteps":[

@@ -1,21 +1,22 @@
 {
-    "website":"IESEG Online",
+    "website":"mediaplus ieseg",
     
     "urls":{
-        "login":"http://www.ieseg-online.com/login/index.php"
+        "login":"http://www.mediapluspro.com/mediaplus69/client_net/login.aspx?cfgsite=html5&cfgbdd=ieseg-67"
     },
     
     "elements":{
+        
         "userField":{
-          "id":"username"  
+            "id":"Login"
         },
         "passField":{
-            "id":"password"
+            "id":"Password"
         },
         "buttonLogIn":{
-            "id":"loginbtn"
+            "id":"btnLogin"
         }
-            
+        
     },
     
     "connectionSteps":[

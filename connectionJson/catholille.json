@@ -1,21 +1,26 @@
+
 {
-    "website":"IESEG Online",
+    "website":"la catho lille",
     
     "urls":{
-        "login":"http://www.ieseg-online.com/login/index.php"
+        "login":"https://sso.univ-catholille.fr/cas/login"
     },
     
     "elements":{
+        
         "userField":{
-          "id":"username"  
+            "id":"username"
         },
         "passField":{
             "id":"password"
         },
         "buttonLogIn":{
-            "id":"loginbtn"
+            "tagName":"input",
+            "className":"btn-submit",
+            "name":"submit",
+            "type":"submit"
         }
-            
+        
     },
     
     "connectionSteps":[

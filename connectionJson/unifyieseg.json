@@ -1,5 +1,5 @@
 {
-    "website":"twitter",
+    "website":"unify ieseg",
     
     "urls":{
         "login":"https://unify.ieseg.fr"
@@ -21,7 +21,7 @@
     "connectionSteps":[
         {
             "action":"goTo",
-            "url":"https://unify.ieseg.fr"
+            "url":"login"
         },
         
         {
@@ -42,6 +42,20 @@
                     "action":"click"
                 }
             ]
+        },
+        
+        {
+            "action":"nextPage",
+            "lastPage":true
+        },
+        
+        {
+            "action":"catchFail",
+            "if":"existingElement",
+            "elementName":"passField",
+            "actionsIfFail":[],
+            "send":"wrongPassword"
         }
     ]
 }
+

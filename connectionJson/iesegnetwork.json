@@ -52,6 +52,14 @@
         },
         
         {
+                "action":"catchFail",
+                "if":"missingElement",
+                "elementName":"passField",
+                "actionsIfFail":[],
+                "send":"alreadyConnected"
+        },
+        
+        {
             "action":"do",
             "elements":[
                 {
@@ -69,6 +77,19 @@
                     "action":"click"
                 }
             ]
+        },
+        
+        {
+            "action":"nextPage",
+            "lastPage":true
+        },
+        
+        {
+            "action":"catchFail",
+            "if":"existingElement",
+            "elementName":"passField",
+            "actionsIfFail":[],
+            "send":"wrongPassword"
         }
     ]
 }

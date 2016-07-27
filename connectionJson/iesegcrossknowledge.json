@@ -1,21 +1,26 @@
+
 {
-    "website":"IESEG Online",
+    "website":"crossknowledge ieseg",
     
     "urls":{
-        "login":"http://www.ieseg-online.com/login/index.php"
+        "login":"http://ieseg.lms.crossknowledge.com/interfaces/login.php"
     },
     
     "elements":{
+        
         "userField":{
-          "id":"username"  
+            "id":"fldUserName"
         },
         "passField":{
-            "id":"password"
+            "id":"fldPassword"
         },
         "buttonLogIn":{
-            "id":"loginbtn"
+            "tagName":"input",
+            "type":"submit",
+            "name":"submitButtonName",
+            "className":"buttonSubmit"
         }
-            
+        
     },
     
     "connectionSteps":[
@@ -53,7 +58,7 @@
         },
         
         {
-            "action":"nextPage",
+           "action":"nextPage",
             "lastPage":true
         },
         

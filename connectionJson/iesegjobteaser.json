@@ -1,21 +1,23 @@
+
 {
-    "website":"IESEG Online",
+    "website":"job teaser ieseg",
     
     "urls":{
-        "login":"http://www.ieseg-online.com/login/index.php"
+        "login":"https://ieseg.jobteaser.com/"
     },
     
     "elements":{
+        
         "userField":{
-          "id":"username"  
+            "id":"txtUserName"
         },
         "passField":{
-            "id":"password"
+            "id":"txtPassword"
         },
         "buttonLogIn":{
-            "id":"loginbtn"
+            "id":"SubmitButton"
         }
-            
+        
     },
     
     "connectionSteps":[
@@ -53,7 +55,7 @@
         },
         
         {
-            "action":"nextPage",
+           "action":"nextPage",
             "lastPage":true
         },
         

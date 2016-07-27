@@ -21,7 +21,7 @@
     "connectionSteps":[
         {
             "action":"goTo",
-            "url":"https://www.facebook.com/login"
+            "url":"login"
         },
         
         {
@@ -53,13 +53,14 @@
         },
         
         {
-            "action":"nextPage"
+            "action":"nextPage",
+            "lastPage":true
         },
         
         {
             "action":"catchFail",
-            "if":"redirected",
-            "noFailUrl":"https://www.facebook.com",
+            "if":"existingElement",
+            "elementName":"passField",
             "actionsIfFail":[],
             "send":"wrongPassword"
         }

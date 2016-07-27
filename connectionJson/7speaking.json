@@ -1,21 +1,26 @@
 {
-    "website":"IESEG Online",
+    "website":"7speaking",
+    
+    "tested":"WORKING. FAILS TO CHECK",
     
     "urls":{
-        "login":"http://www.ieseg-online.com/login/index.php"
+        "login":"https://www.7speaking.com/newsite/controlnew/newlogin.cfm?&red=0&lm=ENG"
     },
     
     "elements":{
+        
         "userField":{
-          "id":"username"  
+            "id":"username"
         },
         "passField":{
             "id":"password"
         },
         "buttonLogIn":{
-            "id":"loginbtn"
+            "tagName":"input",
+            "type":"button",
+            "name":"btn"
         }
-            
+        
     },
     
     "connectionSteps":[

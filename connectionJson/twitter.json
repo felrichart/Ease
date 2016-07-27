@@ -2,7 +2,7 @@
     "website":"twitter",
     
     "urls":{
-        "login":"https://twitter.com/login/"
+        "login":"https://twitter.com"
     },
     
     "elements":{
@@ -10,24 +10,32 @@
         "userField":{
             "tagName":"input",
             "name":"session[username_or_email]",
-            "className":"js-username-field email-input js-initial-focus"
+            "className":"text-input email-input js-signin-email"
         },
         "passField":{
             "tagName":"input",
             "name":"session[password]",
-            "className":"js-password-field"
+            "className":"text-input"
         },
         "buttonLogIn":{
-            "tagName":"button",
+            "tagName":"input",
             "type":"submit",
-            "className":"submit btn primary-btn"
+            "className":"submit btn primary-btn js-submit"
         }
     },
     
     "connectionSteps":[
         {
             "action":"goTo",
-            "url":"https://twitter.com/login"
+            "url":"login"
+        },
+        
+        {
+                "action":"catchFail",
+                "if":"missingElement",
+                "elementName":"passField",
+                "actionsIfFail":[],
+                "send":"alreadyConnected"
         },
         
         {
@@ -48,6 +56,19 @@
                     "action":"click"
                 }
             ]
+        },
+        
+        {
+            "action":"nextPage",
+            "lastPage":true
+        },
+        
+        {
+            "action":"catchFail",
+            "if":"existingElement",
+            "elementName":"passField",
+            "actionsIfFail":[],
+            "send":"wrongPassword"
         }
     ]
 }

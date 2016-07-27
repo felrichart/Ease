@@ -1,0 +1,60 @@
+﻿Merge branch 'master' of https://github.com/felrichart/Ease
+
+# Conflicts:
+#	connectionJson/unifyieseg.json
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch and 'origin/master' have diverged,
+# and have 1 and 30 different commits each, respectively.
+#   (use "git pull" to merge the remote branch into yours)
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	new file:   connectionJson/7speaking.json
+#	modified:   connectionJson/blablacar.json
+#	new file:   connectionJson/cafetieseg.json
+#	new file:   connectionJson/catholille.json
+#	modified:   connectionJson/facebook.json
+#	new file:   connectionJson/gmail.json
+#	new file:   connectionJson/googledrive.json
+#	new file:   connectionJson/iesegcrossknowledge.json
+#	new file:   connectionJson/iesegjobteaser.json
+#	new file:   connectionJson/iesegmediaplus.json
+#	modified:   connectionJson/iesegnetwork.json
+#	modified:   connectionJson/iesegonline.json
+#	new file:   connectionJson/iesegqualtrics.json
+#	new file:   connectionJson/linkedin.json
+#	modified:   connectionJson/office365mail.json
+#	deleted:    connectionJson/oldConnection.json
+#	new file:   connectionJson/openclassroom.json
+#	new file:   connectionJson/projetvoltaire.json
+#	modified:   connectionJson/twitter.json
+#	modified:   connectionJson/unifyieseg.json
+#	new file:   connectionJson/youtube.json
+#	modified:   extension chrome/action.js
+#	modified:   extension chrome/autoLogin.html
+#	modified:   extension chrome/autoLogin.js
+#	deleted:    extension chrome/autoLoginOld.js
+#	new file:   extension chrome/catchFails.js
+#	deleted:    extension chrome/check.js
+#	deleted:    extension chrome/checkFields.js
+#	deleted:    extension chrome/click.js
+#	renamed:    extension chrome/contentScriptEase.js -> extension chrome/contentScript.js
+#	new file:   extension chrome/existingElement.js
+#	deleted:    extension chrome/fillin.js
+#	new file:   extension chrome/insertOverlay.js
+#	modified:   extension chrome/manifest.json
+#	modified:   extension chrome/overlay.js
+#	deleted:    extension chrome/submitForm.js
+#	modified:   views/index.html
+#
+

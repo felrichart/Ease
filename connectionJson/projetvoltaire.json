@@ -1,21 +1,24 @@
 {
-    "website":"IESEG Online",
+    "website":"twitter",
     
     "urls":{
-        "login":"http://www.ieseg-online.com/login/index.php"
+        "login":"https://www.projet-voltaire.fr/signin"
     },
     
     "elements":{
+        
         "userField":{
-          "id":"username"  
+            "id":"auth_username"
         },
         "passField":{
-            "id":"password"
+            "id":"auth_password"
         },
         "buttonLogIn":{
-            "id":"loginbtn"
+            "tagName":"button",
+            "type":"submit",
+            "className":"buttonSubmit",
+            "name":"inscription"
         }
-            
     },
     
     "connectionSteps":[

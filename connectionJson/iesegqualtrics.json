@@ -1,21 +1,24 @@
 {
-    "website":"IESEG Online",
+    "website":"qualtrics ieseg",
     
     "urls":{
-        "login":"http://www.ieseg-online.com/login/index.php"
+        "login":"https://ieseg.az1.qualtrics.com/ControlPanel/"
     },
     
     "elements":{
+        
         "userField":{
-          "id":"username"  
+            "id":"UserName"
         },
         "passField":{
-            "id":"password"
+            "id":"UserPassword"
         },
         "buttonLogIn":{
-            "id":"loginbtn"
+            "tagName":"input",
+            "type":"submit",
+            "className":"btn-sign-in"
         }
-            
+        
     },
     
     "connectionSteps":[
