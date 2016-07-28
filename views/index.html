@@ -3,13 +3,11 @@
 <html>
     <head>
         
-        <div>SALUT SALUT SALUT</div>
         
         <title>Ease app</title>
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
-        
 
         <script>
             
@@ -17,140 +15,6 @@
                 $.getJSON('ease/connection/'+website, function(data) {
                     callback(data);
                 });
-            }
-            
-            function getDatasFacebook(callback){
-                $.getJSON('ease/connectionFacebook.json', function(data) {
-                    callback(data);
-                });
-            }
-            
-            function getDatasIO(callback){
-                $.getJSON('ease/connectionIO.json', function(data) {
-                    callback(data);
-                });
-            }
-            
-            function getDatasTwitter(callback){
-                $.getJSON('ease/connectionTwitter.json', function(data) {
-                    callback(data);
-                });
-            }
-            
-            function getDatasO365mail(callback){
-                $.getJSON('ease/connectionO365mail.json', function(data) {
-                    callback(data);
-                });
-            }
-      
-      
-            
-            function sendEvent1(){ //dispatch an Event to warn the plugin it has to connect to the website
-                getDatas("iesegonline",function(datas){
-                    var event = new CustomEvent("NewConnection",{ //dispatch an Event to warn the plugin it has to connect to the website
-                    'detail':{
-                        'infos':{
-                            "user":'benjamin.prigent@ieseg.fr',
-                            "pass":'caca'
-                        },
-                        
-                        "connection":datas
-                    }
-                    });
-                    document.dispatchEvent(event);
-                    console.log("event sent");
-                });
-
-            }
-
-            function sendEvent2(){ //dispatch an Event to warn the plugin it has to connect to the website
-                getDatas("youtube", function(datas){
-                    var event = new CustomEvent("NewConnection",{ //dispatch an Event to warn the plugin it has to connect to the website
-                    'detail':{
-                        'infos':{
-                            "user":'felix@ease-app.co',
-                            "pass":'caca'
-                        },
-                        
-                        "connection":datas
-                    }
-                    });
-                    document.dispatchEvent(event);
-                    console.log("event sent");
-                });
-            }
-
-            
-            function sendEvent3(){ //dispatch an Event to warn the plugin it has to connect to the website
-                getDatasFacebook("facebook",function(datas){
-                    var event = new CustomEvent("NewConnection",{ //dispatch an Event to warn the plugin it has to connect to the website
-                    'detail':{
-                        'infos':{
-                            "user":'fel.richart@gmail.com',
-                            "pass":'caca'
-                        },
-                        
-                        "connection":datas
-                    }
-                    });
-                    document.dispatchEvent(event);
-                    console.log("event sent");
-                });
-            }
-            
-            function sendEvent4(){ //dispatch an Event to warn the plugin it has to connect to the website
-                getDatasTwitter("twitter",function(datas){
-                    var event = new CustomEvent("NewConnection",{ //dispatch an Event to warn the plugin it has to connect to the website
-                    'detail':{
-                        'infos':{
-                            "user":'fel.richart@gmail.com',
-                            "pass":'caca'
-                        },
-                        
-                        "connection":datas
-                    }
-                    });
-                    document.dispatchEvent(event);
-                    console.log("event sent");
-                });
-
-            }
-            
-            function sendEvent5(){ //dispatch an Event to warn the plugin it has to connect to the website
-                getDatas("blablacar", function(datas){
-                    var event = new CustomEvent("NewConnection",{ //dispatch an Event to warn the plugin it has to connect to the website
-                    'detail':{
-                        'infos':{
-                            "fbConnection":true,
-                            "facebookUser":'fel.richart@gmail.com',
-                            "facebookPass":'caca'
-                        },
-                        
-                        "connection":datas
-                    }
-                    });
-                    document.dispatchEvent(event);
-                    console.log("event sent");
-                });
-
-            }
-            
-            function sendEvent6(){ //dispatch an Event to warn the plugin it has to connect to the website
-                getDatas("office365mail",function(datas){
-                    var event = new CustomEvent("NewConnection",{ //dispatch an Event to warn the plugin it has to connect to the website
-                    'detail':{
-                        'infos':{
-                            "user":"djdsklqdsjdqs",
-                            "pass":"djfjlkd"
-                        },
-                        
-                        "connection":datas
-                    }
-                    });
-                    document.dispatchEvent(event);
-                    console.log("event sent");
-                });
-
             }
             
             function sendEvent(){
@@ -181,7 +45,7 @@
         
     </head>
     <body>
-        <p>Welcome to Ease Benjamin !</p>
+        <p>Welcome to Ease !</p>
         <div>
             Website: <input id="website" type="text" name="website"><br>
             Log In: <input id="user" type="text" name="user"><br>

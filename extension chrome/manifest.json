@@ -1,9 +1,9 @@
 {
 "manifest_version": 2,
     
-"name" :"ease chrome plugin",
-"version" :"1.0.1",
-"description" :"premier plugin ease pour chrome",
+"name" :"Ease",
+"version" :"1.1.1",
+"description" :"Ease extension, log you in and out",
     
 "icons": {
     "128": "logo_128.png"

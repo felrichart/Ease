@@ -57,7 +57,7 @@ function nextStep(tab, steps, params, i, callback){
 }
 
 function endConnection(tab){
-    chrome.tabs.executeScript(tab.id, {"code":"document.getElementsByTagName('html')[0].style.visibility='visible';"}, function(){});
+    
     deleteOverlay(tab);
 }
 
@@ -82,7 +82,7 @@ function goTo(tab, step, params, callback){
         
     } else {
         chrome.tabs.create({"url":url}, function(newTab){
-            chrome.tabs.executeScript(newTab.id, {"code":"document.getElementsByTagName('html')[0].style.visibility ='hidden';","runAt":"document_start"}, function(){});
+            
             insertOverlay(newTab);
             
             
@@ -135,9 +135,7 @@ function nextPage(tab, step, params, callback){
         });
     
          window.setTimeout(function(){
-            console.log("time out");
-            if(!updated){timedOut = true; callback();}
-            
+            if(!updated){console.log("time out"); timedOut = true; callback();}
         }, 3000);
 }
 
