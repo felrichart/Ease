@@ -1,0 +1,26 @@
+{
+    "website":"skype",
+    
+    "tested":"WORKING. FAILS TO CHECK",
+    
+    "urls":{
+        "login":"https://login.skype.com/login"
+    },
+    
+    "elements":{
+
+        
+        "userField":{
+            "id":"username"
+        },
+        "passField":{
+            "id":"password"
+        },
+        "buttonLogIn":{
+
+            "className":"btn primaryCta",
+            "type":"submit",
+            "name":"signIn"
+        }
+        
+    },

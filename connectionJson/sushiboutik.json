@@ -1,0 +1,26 @@
+{
+    "website":"sushiboutik",
+    
+    "tested":"WORKING. FAILS TO CHECK",
+    
+    "urls":{
+        "login":"http://www.sushiboutik.com"
+    },
+    
+    "elements":{
+
+        >> il y a une POPUP
+        
+        "userField":{
+            "id":"log"
+        },
+        "passField":{
+            "id":"pwd"
+        },
+        "buttonLogIn":{
+            "tagName":"input",
+            "type":"submit",
+            "name":"valider"
+        }
+        
+    },
