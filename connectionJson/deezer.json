@@ -1,0 +1,30 @@
+{
+    "website":"deezer",
+    
+    "tested":"WORKING. FAILS TO CHECK",
+    
+    "urls":{
+        "login":"http://www.deezer.com/login"
+    },
+    
+        sign in with fb
+        sign in w ggogle
+        
+    "elements":{
+
+        
+        "userField":{
+            "id":"login_mail"
+        },
+        "passField":{
+            "id":"login_password"
+        },
+        "buttonLogIn":{
+
+            JE TE LAISSE CHECKER SUR LE SITE
+            "tagName":"",
+            "type":"",
+            "name":""
+        }
+        
+    },
