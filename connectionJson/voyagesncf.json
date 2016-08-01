@@ -9,7 +9,7 @@
         "popUpButton":{
           "tagName":"button",
           "tabindex":0
-        }
+        },
         "userField":{
             "id":"ccl-email"
         },
