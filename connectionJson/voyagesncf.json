@@ -1,1 +1,75 @@
-
+{
+    "website":"voyage sncf",
+    
+    "urls":{
+        "login":"http://www.voyages-sncf.com/"
+    },
+    
+    "elements":{
+        "popUpButton":{
+          "tagName":"button",
+          "tabindex":0
+        }
+        "userField":{
+            "id":"ccl-email"
+        },
+        "passField":{
+            "id":"ccl-password"
+        },
+        "logInButton":{
+            "id":"edit-connect"
+        }
+    },
+        
+    "connectionSteps":[
+        {
+            "action":"goTo",
+            "url":"login"
+        },
+        
+        {
+            "action":"catchFail",
+            "if":"missingElement",
+            "elementName":"passField",
+            "actionsIfFail":[],
+            "send":"alreadyConnected"
+        },
+        
+        {
+            "action":"do",
+            "elements":[
+                {
+                  "name":"popUpButton",
+                  "action":"click"
+                }
+                {
+                    "name":"userField",
+                    "action":"fill",
+                    "value":"user"
+                },
+                {
+                    "name":"passField",
+                    "action":"fill",
+                    "value":"pass"
+                },
+                {
+                    "name":"logInButton",
+                    "action":"click"
+                }
+            ]
+        },
+        
+        {
+            "action":"nextPage",
+            "lastPage":true
+        },
+        
+        {
+            "action":"catchFail",
+            "if":"existingElement",
+            "elementName":"passField",
+            "actionsIfFail":[],
+            "send":"wrongPassword"
+        }
+    ]
+}
