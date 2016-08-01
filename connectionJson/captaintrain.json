@@ -1,0 +1,72 @@
+{
+    "website":"captaintrain",
+    
+    "urls":{
+        "login":"https://www.captaintrain.com/"
+    },
+    
+    "elements":{
+    
+        "popUpButton":{
+            
+        },
+        
+        "userField":{
+            "id":"login_mail"
+        },
+        "passField":{
+            "id":"login_password"
+        },
+        "logInButton":{
+            "id":"login_form_submit"
+        }
+    },
+        
+    "connectionSteps":[
+        {
+            "action":"goTo",
+            "url":"login"
+        },
+        
+        {
+            "action":"catchFail",
+            "if":"missingElement",
+            "elementName":"passField",
+            "actionsIfFail":[],
+            "send":"alreadyConnected"
+        },
+        
+        {
+            "action":"do",
+            "elements":[
+                {
+                    "name":"userField",
+                    "action":"fill",
+                    "value":"user"
+                },
+                {
+                    "name":"passField",
+                    "action":"fill",
+                    "value":"pass"
+                },
+                {
+                    "name":"logInButton",
+                    "action":"click"
+                }
+            ]
+        },
+        
+        {
+            "action":"nextPage",
+            "lastPage":true
+        },
+        
+        {
+            "action":"catchFail",
+            "if":"existingElement",
+            "elementName":"passField",
+            "actionsIfFail":[],
+            "send":"wrongPassword"
+        }
+    ]
+}
