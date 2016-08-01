@@ -1,15 +1,10 @@
 {
     "website":"deezer",
     
-    "tested":"WORKING. FAILS TO CHECK",
-    
     "urls":{
         "login":"http://www.deezer.com/login"
     },
     
-        sign in with fb
-        sign in w ggogle
-        
     "elements":{
 
         
@@ -19,12 +14,56 @@
         "passField":{
             "id":"login_password"
         },
-        "buttonLogIn":{
-
-            JE TE LAISSE CHECKER SUR LE SITE
-            "tagName":"",
-            "type":"",
-            "name":""
+        "logInButton":{
+            "id":"login_form_submit"
         }
-        
     },
+        
+    "connectionSteps":[
+        {
+            "action":"goTo",
+            "url":"login"
+        },
+        
+        {
+            "action":"catchFail",
+            "if":"missingElement",
+            "elementName":"passField",
+            "actionsIfFail":[],
+            "send":"alreadyConnected"
+        },
+        
+        {
+            "action":"do",
+            "elements":[
+                {
+                    "name":"userField",
+                    "action":"fill",
+                    "value":"user"
+                },
+                {
+                    "name":"passField",
+                    "action":"fill",
+                    "value":"pass"
+                },
+                {
+                    "name":"logInButton",
+                    "action":"click"
+                }
+            ]
+        },
+        
+        {
+            "action":"nextPage",
+            "lastPage":true
+        },
+        
+        {
+            "action":"catchFail",
+            "if":"existingElement",
+            "elementName":"passField",
+            "actionsIfFail":[],
+            "send":"wrongPassword"
+        }
+    ]
+}
