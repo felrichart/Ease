@@ -1,1 +1,82 @@
+{
+    "website":"instagram",
+    
+    "urls":{
+        "login":"https://www.instagram.com/"
+    },
+    
+    "elements":{
 
+        "redirectButton":{
+          "tagName":"a",
+          "className":"_k6cv7"
+        }
+        "userField":{
+            "tagName":"input",
+            "type":"text",
+            "name":"username",
+            "className":"_kp5f7 _qy55y"
+        },
+        "passField":{
+            "tagName":"input",
+            "type":"password",
+            "name":"password"
+        },
+        "logInButton":{
+            "tagName":"button",
+            "className":"_aj7mu _taytv _ki5uo _o0442"
+        }
+    },
+        
+    "connectionSteps":[
+        {
+            "action":"goTo",
+            "url":"login"
+        },
+        
+        {
+            "action":"catchFail",
+            "if":"missingElement",
+            "elementName":"passField",
+            "actionsIfFail":[],
+            "send":"alreadyConnected"
+        },
+        
+        {
+            "action":"do",
+            "elements":[
+                {
+                    "name":"redirectButton",
+                    "action":"click"
+                }
+                {
+                    "name":"userField",
+                    "action":"fill",
+                    "value":"user"
+                },
+                {
+                    "name":"passField",
+                    "action":"fill",
+                    "value":"pass"
+                },
+                {
+                    "name":"logInButton",
+                    "action":"click"
+                }
+            ]
+        },
+        
+        {
+            "action":"nextPage",
+            "lastPage":true
+        },
+        
+        {
+            "action":"catchFail",
+            "if":"existingElement",
+            "elementName":"passField",
+            "actionsIfFail":[],
+            "send":"wrongPassword"
+        }
+    ]
+}
