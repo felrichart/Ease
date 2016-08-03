@@ -8,8 +8,6 @@ image.src = "http://i.giphy.com/l46C731L5I8go6Zfq.gif";
 image.style = "visibility: visible;";
 insideOverlay.appendChild(image);
 overlay.appendChild(insideOverlay);
-
-console.log('Ease plugin : inserting overlay');
           
 var alreadyHere = document.getElementById("loading page ease");
 console.log(document);

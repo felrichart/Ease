@@ -2,23 +2,23 @@
 
 //listen to content script for message
 chrome.runtime.onMessage.addListener(
-  function(msg) {
+    
+    function(msg, sender, sendResponse) {
       if(msg.msg = "connectThisGuy"){
           console.log("Ease plugin : request for connection to " + msg.params.connection.website + " recievied");
-          logIn(msg.params);
+          logIn(msg.params, sender.tab);
       }
-      
-      
-});
+    }      
+);
 
 
-function logIn(params){
-    var tab;
-    if(params.infos.fbConnection){
-        nextStep(tab, params.connection.facebookConnectionSteps, params, 0, function(){});
-    } else {
-        nextStep(tab, params.connection.connectionSteps, params, 0, function(){});
-    }
+function logIn(params, tab){
+        console.log(tab);
+        if(params.infos.fbConnection){
+            nextStep(tab, params.connection.facebookConnectionSteps, params, 0, function(){});
+        } else {
+            nextStep(tab, params.connection.connectionSteps, params, 0, function(){});
+        }
         
 }
 
@@ -26,8 +26,7 @@ function nextStep(tab, steps, params, i, callback){
     
     if(steps[i]){
         var step = steps[i];
-        if(tab) {console.log("New action : " + step.action +", step number "+i + ", tab id : "+ tab.id +", status : "+tab.status+ ", url : "+tab.url);}
-        else {console.log("New action : " + step.action +", step number "+i + ", no tab");}
+        console.log("New action : " + step.action +", step number "+i);
         switch(step.action){
             case "goTo":
                 goTo(tab, step, params, function(newTab){

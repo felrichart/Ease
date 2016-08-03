@@ -15,10 +15,10 @@
                 $.getJSON('ease/connection/'+website, function(data) {
                     callback(data);
                 });
+                
             }
             
             function sendEvent(){
-
                 var website = document.getElementById("website").value;
                 var user = document.getElementById("user").value;
                 var passwd = document.getElementById("passwd").value;
@@ -36,8 +36,7 @@
                     });
                     document.dispatchEvent(event);
                     console.log("event sent");
-                });
-
+            });
             }
             
             
