@@ -6,7 +6,7 @@ chrome.runtime.onMessage.addListener(
     function(msg, sender, sendResponse) {
       if(msg.msg = "connectThisGuy"){
           console.log("Ease plugin : request for connection to " + msg.params.connection.website + " recievied");
-          logIn(msg.params, sender.tab);
+          logIn(msg.params, null/*sender.tab*/);
       }
     }      
 );
@@ -14,7 +14,7 @@ chrome.runtime.onMessage.addListener(
 
 function logIn(params, tab){
         console.log(tab);
-        if(params.infos.fbConnection){
+        if(params.infos.fbConnect){
             nextStep(tab, params.connection.facebookConnectionSteps, params, 0, function(){});
         } else {
             nextStep(tab, params.connection.connectionSteps, params, 0, function(){});
@@ -47,6 +47,12 @@ function nextStep(tab, steps, params, i, callback){
                 catchFail(tab, step, params, function(){
                     nextStep(tab, steps, params, i+1, callback);      
                 });
+                break;
+            case "facebookConnection":
+                params.connection = facebookConnectionJson;
+                params.infos.fbConnect = false;
+                logIn(params, tab);
+                break;
         }
     } else {
         console.log("end connection");
@@ -56,7 +62,7 @@ function nextStep(tab, steps, params, i, callback){
 }
 
 function endConnection(tab){
-    
+
     deleteOverlay(tab);
 }
 
@@ -115,6 +121,10 @@ function nextPage(tab, step, params, callback){
         
         var timedOut = false;
         var updated = false;
+    
+        window.setTimeout(function(){
+            if(!updated){console.log("time out"); timedOut = true; callback();}
+        }, 2000);
         
         chrome.tabs.onUpdated.addListener(function whenTriggered(tabId, info, newTab){
             
@@ -133,9 +143,6 @@ function nextPage(tab, step, params, callback){
             }
         });
     
-         window.setTimeout(function(){
-            if(!updated){console.log("time out"); timedOut = true; callback();}
-        }, 3000);
 }
 
 

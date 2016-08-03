@@ -1,11 +1,9 @@
 {
     "website":"blablacar",
     
-    "tested":"CLASSIC CONNECTION ONLY. FAILS TO CHECK",
-    
     "urls":{
         "login":"https://www.blablacar.fr/identification",
-        "loginFacebook":"https://www.blablacar.fr/connect/facebook"
+        "facebookLogin":"https://www.blablacar.fr/connect/facebook"
     },
     
     "elements":{
@@ -25,15 +23,6 @@
             "type":"submit",
             "name":"_submit",
             "className":"btn-validation btn-large full-width apply-btn-loader"
-        },
-        "userFbField":{
-            "id":"email"
-        },
-        "passFbField":{
-            "id":"pass"
-        },
-        "logInButtonFB":{
-            "id":"loginbutton"
         }
         
     },
@@ -51,7 +40,7 @@
                 "actionsIfFail":[],
                 "send":"alreadyConnected"
         },
-        
+                
         {
             "action":"do",
             "elements":[
@@ -83,6 +72,30 @@
             "elementName":"passField",
             "actionsIfFail":[],
             "send":"wrongPassword"
+        }
+    ],
+    
+    "facebookConnectionSteps":[
+        {
+            "action":"goTo",
+            "url":"login"
+        },
+        
+        {
+                "action":"catchFail",
+                "if":"missingElement",
+                "elementName":"passField",
+                "actionsIfFail":[],
+                "send":"alreadyConnected"
+        },
+        
+        {
+            "action":"goTo",
+            "url":"facebookLogin"
+        },
+        
+        {
+            "action":"facebookConnection"
         }
     ]
 }

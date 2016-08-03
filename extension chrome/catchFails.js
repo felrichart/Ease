@@ -79,5 +79,9 @@ function checkExistingElement(tab, fail, params, callback){
 
 function handleFail(response, tab, fail, params, callback){
     console.log("Fail : " + response);
-    nextStep(tab, fail.actionsIfFail, params, 0, callback);;
-}//ToDo
+    if(response == "wrongPassword"){
+        console.log("fijeofij");
+        chrome.tabs.executeScript(tab.id, {"code":"alert('Identifiant ou mot de passe incorrects./nRendez vous sur Ease pour le modifier ;)');"}, function(){});
+    }
+    nextStep(tab, fail.actionsIfFail, params, 0, callback);
+}

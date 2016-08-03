@@ -22,14 +22,24 @@
                 var website = document.getElementById("website").value;
                 var user = document.getElementById("user").value;
                 var passwd = document.getElementById("passwd").value;
+                var special = document.getElementById("special").value;
                 console.log("sending event to " + website+ " for user "+user);
+                if(special == "facebook"){
+                    var infos = {
+                        "user":user,
+                        "pass":passwd,
+                        "fbConnect":true
+                    }
+                } else {
+                    var infos = {
+                        "user":user,
+                        "pass":passwd
+                    }
+                }
                 getDatas(website,function(datas){
                     var event = new CustomEvent("NewConnection",{ //dispatch an Event to warn the plugin it has to connect to the website
                     'detail':{
-                        'infos':{
-                            "user":user,
-                            "pass":passwd
-                        },
+                        'infos':infos,
                         
                         "connection":datas
                     }
@@ -49,6 +59,7 @@
             Website: <input id="website" type="text" name="website"><br>
             Log In: <input id="user" type="text" name="user"><br>
             Password: <input id="passwd" type="password" name="pssswd"><br>
+            Special connect: <input id="special" type="text" name="special"><br>
             <button id="button" onclick="sendEvent()"> CONNEXION </button>
         </div>
         

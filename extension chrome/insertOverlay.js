@@ -1,5 +1,5 @@
 function insertOverlay(tab){
-    chrome.tabs.executeScript(tab.id, {"code":"document.getElementsByTagName('html')[0].style.visibility = 'hidden';", "runAt":"document_start"},function(){
+    chrome.tabs.executeScript(tab.id, {"code":"/*document.getElementsByTagName('html')[0].style.visibility = 'hidden';*/", "runAt":"document_start"},function(){
         chrome.tabs.executeScript(tab.id, {"file":'overlay.js'},function(){});
     });
 }

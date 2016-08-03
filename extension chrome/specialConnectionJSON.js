@@ -1,54 +1,33 @@
-{
-    "website":"instagram",
-    
-    "urls":{
-        "login":"https://www.instagram.com/"
-    },
+var facebookConnectionJson = {
     
     "elements":{
-
-        "redirectButton":{
-          "tagName":"a",
-          "className":"_k6cv7"
-        },
+        
         "userField":{
-            "tagName":"input",
-            "type":"text",
-            "name":"username",
-            "className":"_kp5f7 _qy55y"
+            "id":"email"
         },
         "passField":{
-            "tagName":"input",
-            "type":"password",
-            "name":"password"
+            "id":"pass"
         },
         "logInButton":{
-            "tagName":"button",
-            "className":"_aj7mu _taytv _ki5uo _o0442"
+            "tagName":"input",
+            "name":"login",
+            "type":"submit"
         }
     },
-        
+    
     "connectionSteps":[
-        {
-            "action":"goTo",
-            "url":"login"
-        },
         
         {
-            "action":"catchFail",
-            "if":"missingElement",
-            "elementName":"passField",
-            "actionsIfFail":[],
-            "send":"alreadyConnected"
+                "action":"catchFail",
+                "if":"missingElement",
+                "elementName":"passField",
+                "actionsIfFail":[],
+                "send":"connectedToFacebook"
         },
         
         {
             "action":"do",
             "elements":[
-                {
-                    "name":"redirectButton",
-                    "action":"click"
-                },
                 {
                     "name":"userField",
                     "action":"fill",
@@ -76,7 +55,7 @@
             "if":"existingElement",
             "elementName":"passField",
             "actionsIfFail":[],
-            "send":"wrongPassword"
+            "send":"wrongFacebookPassword"
         }
     ]
-}
+};

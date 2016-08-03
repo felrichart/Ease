@@ -10,7 +10,7 @@ insideOverlay.appendChild(image);
 overlay.appendChild(insideOverlay);
           
 var alreadyHere = document.getElementById("loading page ease");
-console.log(document);
+
 if(!alreadyHere){document.body.insertBefore(overlay, document.body.firstChild);}
 
 chrome.runtime.onMessage.addListener(
