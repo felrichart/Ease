@@ -22,6 +22,7 @@
                 var website = document.getElementById("website").value;
                 var user = document.getElementById("user").value;
                 var passwd = document.getElementById("passwd").value;
+                var mail = document.getElementById("mail").value;
                 var special = document.getElementById("special").value;
                 console.log("sending event to " + website+ " for user "+user);
                 if(special == "facebook"){
@@ -33,7 +34,8 @@
                 } else {
                     var infos = {
                         "user":user,
-                        "pass":passwd
+                        "pass":passwd,
+                        "mail":mail
                     }
                 }
                 getDatas(website,function(datas){
@@ -60,6 +62,7 @@
             Log In: <input id="user" type="text" name="user"><br>
             Password: <input id="passwd" type="password" name="pssswd"><br>
             Special connect: <input id="special" type="text" name="special"><br>
+            Mail: <input id="mail" type="text" name="mail"><br>
             <button id="button" onclick="sendEvent()"> CONNEXION </button>
         </div>
         

@@ -1,21 +1,24 @@
 {
-    "website":"unify ieseg",
+    "website":"Ease App pré-inscription",
     
     "urls":{
-        "login":"https://unify.ieseg.fr"
+        "login":"http://www.ease-app.co/register"
     },
     
     "elements":{
-        
-        "userField":{
-            "id":"txtUserName"
+        "prenom":{
+            "id":"first_name"
         },
-        "passField":{
-            "id":"txtPassword"
+        "nom":{
+            "id":"last_name"
+        },
+        "mail":{
+            "id":"email"
         },
         "buttonLogIn":{
-            "id":"SubmitButton"
+            "id":"submit_button"
         }
+        
     },
     
     "connectionSteps":[
@@ -23,19 +26,23 @@
             "action":"goTo",
             "url":"login"
         },
-        
-        {
+         {
             "action":"do",
             "elements":[
                 {
-                    "name":"userField",
+                    "name":"prenom",
                     "action":"fill",
                     "value":"user"
                 },
                 {
-                    "name":"passField",
+                    "name":"nom",
                     "action":"fill",
                     "value":"pass"
+                },
+                {
+                    "name":"mail",
+                    "action":"fill",
+                    "value":"mail"
                 },
                 {
                     "name":"buttonLogIn",
@@ -45,17 +52,7 @@
         },
         
         {
-            "action":"nextPage",
-            "lastPage":true
-        },
-        
-        {
-            "action":"catchFail",
-            "if":"existingElement",
-            "elementName":"passField",
-            "actionsIfFail":[{"action":"end"}],
-            "send":"wrongPassword"
+            "action":"nextPage"
         }
     ]
 }
-

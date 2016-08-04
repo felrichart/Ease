@@ -2,7 +2,8 @@
     "website":"IESEG Online",
     
     "urls":{
-        "login":"http://www.ieseg-online.com/login/index.php"
+        "login":"http://www.ieseg-online.com/login/index.php",
+        "home":"http://www.ieseg-online.com/"
     },
     
     "elements":{
@@ -28,7 +29,14 @@
                 "action":"catchFail",
                 "if":"missingElement",
                 "elementName":"passField",
-                "actionsIfFail":[],
+                "actionsIfFail":[
+                    {
+                        "action":"goTo",
+                        "url":"home",
+                        "lastPage":true
+                    },
+                    {"action":"end"}
+                ],
                 "send":"alreadyConnected"
         },
         
@@ -53,15 +61,14 @@
         },
         
         {
-            "action":"nextPage",
-            "lastPage":true
+            "action":"nextPage"
         },
         
         {
             "action":"catchFail",
             "if":"existingElement",
             "elementName":"passField",
-            "actionsIfFail":[],
+            "actionsIfFail":[{"action":"end"}],
             "send":"wrongPassword"
         }
     ]

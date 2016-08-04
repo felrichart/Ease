@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+    
+<head>
+    
+    <!-- 
+    Page principale de laquelle sont lancés tous les scripts en background.
+    Tous ces scripts tournent tant que le browser est ouvert.
+    -->
+
+    <script src="jquery-3.0.0.js"></script>
+    
+    <!-- Script principal. C'est lui qui parse le json du site et qui décide des actions à effectuer. C'est ici que commence et se termine la connection. -->
+    <script src="connectionSteps.js"></script> 
+    
+    <!-- Script correspondant à la commande "do" des json, qui permet de cliquer et remplir des champs -->
+    <script src="action.js"></script> 
+    
+    <!-- Script correspondant à la commande goTo et nextPage des json, qui permettent de changer de page ou d'attendre le chargement d'une page-->
+    <script src="navigation.js"></script> 
+    
+    <!-- Script correspondant à la commande catchFail des json. C'est ce script qui gère tous les imprévus du site sur lequel on navigue, en parsant les catchFail -->
+    <script src="catchFails.js"></script> 
+    
+    <!-- Script qui insère et retire l'overlay du chargement -->
+    <script src="insertOverlay.js"></script>
+    
+    <!-- Script qui contient des variables correspondant aux Json de la connection avec Facebook, linkedin, google et twitter (que Facebook d'intégré) -->
+    <script src="specialConnectionJSON.js"></script> 
+
+
+</head>
+    
+<body>
+<p>Welcome to Ease !</p>
+</body>
+    
+</html>

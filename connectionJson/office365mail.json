@@ -2,10 +2,14 @@
     "website":"Office 365 mail",
     
     "urls":{
-        "login":"https://login.microsoftonline.com/" 
+        "login":"https://login.microsoftonline.com/",
+        "mail":"https://outlook.office365.com/"
     },
     
     "elements":{
+        "otherAccount":{
+          "id":"use_another_account_link"  
+        },
         "userField":{
           "id":"cred_userid_inputtext"  
         },
@@ -14,6 +18,12 @@
         },
         "buttonLogIn":{
             "id":"cred_sign_in_button"
+        },
+        "proTile":{
+            "id":"aad_account_tile_link"
+        },
+        "mailButton":{
+            "id":"ShellMail_link"
         }
             
     },
@@ -25,10 +35,28 @@
         },
         
         {
+            "action":"catchFail",
+            "if":"existingElement",
+            "elementName":"otherAccount",
+            "actionsIfFail":[
+                {
+                    "action":"do",
+                    "elements":[{
+                        "name":"otherAccount",
+                        "action":"click"
+                    }]
+                }
+            ],
+            "send":"passSelection"
+        },
+        
+        {
                 "action":"catchFail",
                 "if":"missingElement",
                 "elementName":"passField",
-                "actionsIfFail":[],
+                "actionsIfFail":[
+                    {"action":"goTo", "url":"mail"},
+                    {"action":"end"}],
                 "send":"alreadyConnected"
         },
         
@@ -53,16 +81,48 @@
         },
         
         {
-            "action":"nextPage",
-            "lastPage":true
+            "action":"nextPage"
+        },
+        
+        {
+                "action":"catchFail",
+                "if":"existingElement",
+                "elementName":"proTile",
+                "actionsIfFail":[
+                    {
+                        "action":"do",
+                        "elements":[{
+                            "name":"proTile",
+                            "action":"click"
+                        },
+                                   
+                        {
+                            "name":"buttonLogIn",
+                            "action":"click"
+                        }]
+                    },
+                    {
+                        "action":"nextPage"
+                    }
+                    
+                ],
+                "send":"passSelection"
         },
         
         {
             "action":"catchFail",
             "if":"existingElement",
             "elementName":"passField",
-            "actionsIfFail":[],
+            "actionsIfFail":[{"action":"end"}],
             "send":"wrongPassword"
+        },
+        
+        {
+            "action":"goTo",
+            "url":"mail",
+            "lastpage":true
         }
+        
+        
     ]
 }

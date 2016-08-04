@@ -1,40 +1,28 @@
-{
-    "website":"7speaking",
-    
-    "tested":"WORKING. FAILS TO CHECK",
-    
-    "urls":{
-        "login":"https://www.7speaking.com/newsite/controlnew/newlogin.cfm?&red=0&lm=ENG"
-    },
+var facebookConnectionJson = {
     
     "elements":{
         
         "userField":{
-            "id":"username"
+            "id":"email"
         },
         "passField":{
-            "id":"password"
+            "id":"pass"
         },
-        "buttonLogIn":{
+        "logInButton":{
             "tagName":"input",
-            "type":"button",
-            "name":"btn"
+            "name":"login",
+            "type":"submit"
         }
-        
     },
     
     "connectionSteps":[
-        {
-            "action":"goTo",
-            "url":"login"
-        },
         
         {
                 "action":"catchFail",
                 "if":"missingElement",
                 "elementName":"passField",
                 "actionsIfFail":[{"action":"end"}],
-                "send":"alreadyConnected"
+                "send":"connectedToFacebook"
         },
         
         {
@@ -51,7 +39,7 @@
                     "value":"pass"
                 },
                 {
-                    "name":"buttonLogIn",
+                    "name":"logInButton",
                     "action":"click"
                 }
             ]
@@ -67,7 +55,7 @@
             "if":"existingElement",
             "elementName":"passField",
             "actionsIfFail":[],
-            "send":"wrongPassword"
+            "send":"wrongFacebookPassword"
         }
     ]
-}
+};

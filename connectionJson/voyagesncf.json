@@ -28,7 +28,7 @@
             "action":"catchFail",
             "if":"missingElement",
             "elementName":"passField",
-            "actionsIfFail":[],
+            "actionsIfFail":[{"action":"end"}],
             "send":"alreadyConnected"
         },
         
@@ -68,6 +68,9 @@
                 "elements":[
                     
                 ]
+            },
+            {
+                "action":"end"
             }
             ],
             "send":"wrongPassword"

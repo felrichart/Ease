@@ -1,8 +1,6 @@
-//active when localhost:8080/ease is active
-
 console.log("Ease plugin : waiting for request");
 
-//this listen when the event 'NewConnection' is dispatched by ease
+//écoute ease.space et envoie un message au background lorsque ease.space requiert une connection.
 document.addEventListener("NewConnection", function(event){
             
         var msg = {};
@@ -14,3 +12,5 @@ document.addEventListener("NewConnection", function(event){
         });
     
 }, false);
+
+//TODO répondre à ease.space pour dire que tout s'est bien passé

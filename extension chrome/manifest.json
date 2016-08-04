@@ -6,23 +6,23 @@
 "description" :"Ease extension, log you in and out",
     
 "icons": {
-    "128": "logo_128.png"
+    "128": "images/logo_128.png"
 },
     
 "browser_action": {
-    "default_popup" :"popup.html",
-    "default_icon": "logo_296.png"
+    "default_popup" :"popUp/popup.html",
+    "default_icon": "images/logo_296.png"
 },
       
 "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["contentScript.js"]
+      "js": ["easeListener.js"]
     }
   ],
     
 "background":{
-    "page" : "autoLogin.html",
+    "page" : "background/background.html",
     "persistent": false
 },
     

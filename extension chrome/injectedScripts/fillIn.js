@@ -1,7 +1,8 @@
+//Ce script remplit des champs et clique sur des boutons.
 
 chrome.runtime.onMessage.addListener(
-    
     function(msg, sender, sendResponse) {
+        
         if(msg.msg == "do"){
                         
             var infos = msg.infos;
@@ -11,6 +12,7 @@ chrome.runtime.onMessage.addListener(
             console.log(elementsToParse);
             console.log(onElementsActions);
             
+            //fonction qui est appellée pour executer une action
             function doAction(element, action){
                 switch (action.action){
                     case "fill":
@@ -22,15 +24,17 @@ chrome.runtime.onMessage.addListener(
                 }
             }
             
-            
+            //itération sur la liste des actions à effectuer
             for (var i in onElementsActions){
                 var action = onElementsActions[i];
                 var identifiers = elementsToParse[action.name];
-                console.log(identifiers);
                 
+                //si le champs à une id, on fait l'action directement
                 if(identifiers.id){
                     var element = document.getElementById(identifiers.id);
-                    if(element){doAction(element, action);}                    
+                    if(element){doAction(element, action);}       
+                    
+                //sinon on cherche le champs grâce à ses paramètres
                 } else {
                     
                     var elements = document.getElementsByTagName(identifiers.tagName);

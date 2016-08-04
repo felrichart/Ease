@@ -1,28 +1,38 @@
-var facebookConnectionJson = {
+{
+    "website":"nomDuSite",
+    
+    "urls":{
+        "login":"http://urlDeConnectionDuSite.com"
+    },
     
     "elements":{
         
         "userField":{
-            "id":"email"
+            "id":"si le champ a une ID"
         },
         "passField":{
-            "id":"pass"
+            "id":"si le champ a une ID"
         },
-        "logInButton":{
-            "tagName":"input",
-            "name":"login",
-            "type":"submit"
+        "buttonLogIn":{
+            "tagName":"si pas d'ID, tagName obligatoire",
+            "type":"autres paramètres facultatifs mais suffisamment pour décrire le champ de manière unique",
+            "name":"Attention, remplacer class par className."
         }
+        
     },
     
     "connectionSteps":[
+        {
+            "action":"goTo",
+            "url":"login"
+        },
         
         {
                 "action":"catchFail",
                 "if":"missingElement",
                 "elementName":"passField",
-                "actionsIfFail":[],
-                "send":"connectedToFacebook"
+                "actionsIfFail":[{"action":"end"}],
+                "send":"alreadyConnected"
         },
         
         {
@@ -39,7 +49,7 @@ var facebookConnectionJson = {
                     "value":"pass"
                 },
                 {
-                    "name":"logInButton",
+                    "name":"buttonLogIn",
                     "action":"click"
                 }
             ]
@@ -54,8 +64,8 @@ var facebookConnectionJson = {
             "action":"catchFail",
             "if":"existingElement",
             "elementName":"passField",
-            "actionsIfFail":[],
-            "send":"wrongFacebookPassword"
+            "actionsIfFail":[{"action":"end"}],
+            "send":"wrongPassword"
         }
     ]
-};
+}
