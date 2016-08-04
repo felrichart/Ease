@@ -1,20 +1,26 @@
 {
-    "website":"amazon",
+    "website":"coursera",
     
     "urls":{
-        "login":"https://www.amazon.fr/gp/navigation/redirector.html/ref=sign-in-redirect?ie=UTF8&associationHandle=frflex&currentPageURL=https%3A%2F%2Fwww.amazon.fr%2F%3Fref_%3Dnav_custrec_signin&pageType=Gateway&yshURL=https%3A%2F%2Fwww.amazon.fr%2Fgp%2Fyourstore%2Fhome%3Fie%3DUTF8%26ref_%3Dnav_custrec_signin"
+        "login":"https://fr.coursera.org"
     },
     
     "elements":{
-        
+        "connectionButton":{
+            "tagName":"a",
+            "href":"https://fr.coursera.org/?authMode=login"
+        },
         "userField":{
-            "id":"ap_email"
+            "tagName":"input",
+            "name":"email"
         },
         "passField":{
-            "id":"ap_password"
+            "tagName":"input",
+            "name":"password"
         },
         "buttonLogIn":{
-            "id":"signInSubmit"
+            "tagName":"button",
+            "innerHTML":"Connexion"
         }
         
     },
@@ -23,6 +29,20 @@
         {
             "action":"goTo",
             "url":"login"
+        },
+        
+        {
+            "action":"do",
+            "elements":[
+                {
+                    "name":"connectionButton",
+                    "action":"click"
+                }
+            ]
+        },
+        
+        {
+            "action":"nextPage"
         },
         
         {

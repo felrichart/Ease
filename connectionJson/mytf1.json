@@ -1,0 +1,119 @@
+{
+    "website":"my TF1",
+    
+    "urls":{
+        "login":"https://auth.mytf1.tf1.fr/mon-compte/login"
+    },
+    
+    "elements":{
+        
+        "facebookButton":{
+            "id":"loginFacebook"
+        },
+        "classicConnectionButton":{
+            "id":"routeLogin"  
+        },
+        "userField":{
+            "id":"email"
+        },
+        "passField":{
+            "id":"password"
+        },
+        "buttonLogIn":{
+            "id":"tf1Login"
+        }
+        
+    },
+    
+    "connectionSteps":[
+        {
+            "action":"goTo",
+            "url":"login"
+        },
+        
+        {
+                "action":"catchFail",
+                "if":"missingElement",
+                "elementName":"classicConnectionButton",
+                "actionsIfFail":[{"action":"end"}],
+                "send":"alreadyConnected"
+        },
+                
+        {
+            "action":"do",
+            "elements":[
+                {
+                    "name":"classicConnectionButton",
+                    "action":"click"
+                }
+            ]
+        },
+        
+        {
+            "action":"nextPage"
+        },
+        
+        {
+            "action":"do",
+            "elements":[
+                {
+                    "name":"userField",
+                    "action":"fill",
+                    "value":"user"
+                },
+                {
+                    "name":"passField",
+                    "action":"fill",
+                    "value":"pass"
+                },
+                {
+                    "name":"buttonLogIn",
+                    "action":"click"
+                }
+            ]
+        },
+        
+         {
+            "action":"nextPage",
+             "lastPage":true
+        },
+        
+        
+        {
+            "action":"catchFail",
+            "if":"existingElement",
+            "elementName":"passField",
+            "actionsIfFail":[{"action":"end"}],
+            "send":"wrongPassword"
+        }
+    ],
+    
+    "facebookConnectionSteps":[
+        {
+            "action":"goTo",
+            "url":"login"
+        },
+        
+        {
+                "action":"catchFail",
+                "if":"missingElement",
+                "elementName":"classicConnectionButton",
+                "actionsIfFail":[{"action":"end"}],
+                "send":"alreadyConnected"
+        },
+                
+        {
+            "action":"do",
+            "elements":[
+                {
+                    "name":"facebookButton",
+                    "action":"click"
+                }
+            ]
+        },
+        
+        {
+            "action":"facebookConnection"
+        }
+    ]
+}

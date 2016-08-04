@@ -50,7 +50,7 @@ function nextPage(tab, step, params, callback){
         if(!step.lastPage){insertOverlay(tab);}
     
         window.setTimeout(function(){
-            if(!updated && tab.status!="loading"){console.log("time out"); timedOut = true; callback();}
+            if(!updated && tab.status!="loading"){console.log("time out"); timedOut = true; callback(tab);}
         }, 3000);//on attend 3 secondes parce que ieseg online met 2 secondes et demi pour commencer le chargement de la page suivante
         
         
@@ -63,7 +63,7 @@ function nextPage(tab, step, params, callback){
             } else {                
                 if (tab.id==tabId && info.status == "complete") {
                     chrome.tabs.onUpdated.removeListener(whenTriggered);
-                    callback();
+                    callback(newTab);
                 }
             }
         });

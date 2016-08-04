@@ -1,20 +1,23 @@
 {
-    "website":"amazon",
+    "website":"prezi",
     
     "urls":{
-        "login":"https://www.amazon.fr/gp/navigation/redirector.html/ref=sign-in-redirect?ie=UTF8&associationHandle=frflex&currentPageURL=https%3A%2F%2Fwww.amazon.fr%2F%3Fref_%3Dnav_custrec_signin&pageType=Gateway&yshURL=https%3A%2F%2Fwww.amazon.fr%2Fgp%2Fyourstore%2Fhome%3Fie%3DUTF8%26ref_%3Dnav_custrec_signin"
+        "login":"https://prezi.com/login/"
     },
     
     "elements":{
         
         "userField":{
-            "id":"ap_email"
+            "id":"id_username"
         },
         "passField":{
-            "id":"ap_password"
+            "id":"id_password"
         },
         "buttonLogIn":{
-            "id":"signInSubmit"
+            "id":"btn_login"
+        },
+        "facebookButton":{
+            "id":"facebook-login"
         }
         
     },
@@ -64,6 +67,35 @@
             "elementName":"passField",
             "actionsIfFail":[{"action":"end"}],
             "send":"wrongPassword"
+        }
+    ],
+    
+    "facebookConnectionSteps":[
+        {
+            "action":"goTo",
+            "url":"login"
+        },
+        
+        {
+                "action":"catchFail",
+                "if":"missingElement",
+                "elementName":"passField",
+                "actionsIfFail":[{"action":"end"}],
+                "send":"alreadyConnected"
+        },
+            
+        {
+            "action":"do",
+            "elements":[
+                {
+                    "name":"facebookButton",
+                    "action":"click"
+                }
+            ]
+        },
+        
+        {
+            "action":"facebookConnection"
         }
     ]
 }

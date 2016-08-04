@@ -9,9 +9,6 @@ chrome.runtime.onMessage.addListener(
             var elementsToParse = msg.elements;
             var onElementsActions = msg.step.elements;
             
-            console.log(elementsToParse);
-            console.log(onElementsActions);
-            
             //fonction qui est appellée pour executer une action
             function doAction(element, action){
                 switch (action.action){

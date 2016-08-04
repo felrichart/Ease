@@ -1,20 +1,21 @@
 {
-    "website":"amazon",
+    "website":"Bunkr",
     
     "urls":{
-        "login":"https://www.amazon.fr/gp/navigation/redirector.html/ref=sign-in-redirect?ie=UTF8&associationHandle=frflex&currentPageURL=https%3A%2F%2Fwww.amazon.fr%2F%3Fref_%3Dnav_custrec_signin&pageType=Gateway&yshURL=https%3A%2F%2Fwww.amazon.fr%2Fgp%2Fyourstore%2Fhome%3Fie%3DUTF8%26ref_%3Dnav_custrec_signin"
+        "login":"https://bunkrapp.com/signin/",
+        "facebookLogin":"https://bunkrapp.com/oauth/facebook/login/"
     },
     
     "elements":{
         
         "userField":{
-            "id":"ap_email"
+            "id":"bkr-signin-mail"
         },
         "passField":{
-            "id":"ap_password"
+            "id":"bkr-signin-password"
         },
         "buttonLogIn":{
-            "id":"signInSubmit"
+            "id":"bkr-btn-submit-signin"
         }
         
     },
@@ -64,6 +65,30 @@
             "elementName":"passField",
             "actionsIfFail":[{"action":"end"}],
             "send":"wrongPassword"
+        }
+    ],
+    
+    "facebookConnectionSteps":[
+        {
+            "action":"goTo",
+            "url":"login"
+        },
+        
+        {
+                "action":"catchFail",
+                "if":"missingElement",
+                "elementName":"passField",
+                "actionsIfFail":[{"action":"end"}],
+                "send":"alreadyConnected"
+        },
+        
+        {
+            "action":"goTo",
+            "url":"facebookLogin"
+        },
+        
+        {
+            "action":"facebookConnection"
         }
     ]
 }

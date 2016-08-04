@@ -1,20 +1,23 @@
 {
-    "website":"amazon",
+    "website":"leboncoin",
     
     "urls":{
-        "login":"https://www.amazon.fr/gp/navigation/redirector.html/ref=sign-in-redirect?ie=UTF8&associationHandle=frflex&currentPageURL=https%3A%2F%2Fwww.amazon.fr%2F%3Fref_%3Dnav_custrec_signin&pageType=Gateway&yshURL=https%3A%2F%2Fwww.amazon.fr%2Fgp%2Fyourstore%2Fhome%3Fie%3DUTF8%26ref_%3Dnav_custrec_signin"
+        "login":"https://compteperso.leboncoin.fr/account/index.html",
+        "home":"https://www.leboncoin.fr/"
     },
     
     "elements":{
         
         "userField":{
-            "id":"ap_email"
+            "tagName":"input",
+            "name":"st_username"
         },
         "passField":{
-            "id":"ap_password"
+            "tagName":"input",
+            "name":"st_passwd"
         },
         "buttonLogIn":{
-            "id":"signInSubmit"
+            "id":"connect_button"
         }
         
     },
@@ -54,8 +57,7 @@
         },
         
         {
-            "action":"nextPage",
-            "lastPage":true
+            "action":"nextPage"
         },
         
         {
@@ -64,6 +66,11 @@
             "elementName":"passField",
             "actionsIfFail":[{"action":"end"}],
             "send":"wrongPassword"
+        },
+        {
+            "action":"goTo",
+            "url":"home",
+            "lastPage":true
         }
     ]
 }

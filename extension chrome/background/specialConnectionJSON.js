@@ -54,7 +54,7 @@ var facebookConnectionJson = {
             "action":"catchFail",
             "if":"existingElement",
             "elementName":"passField",
-            "actionsIfFail":[],
+            "actionsIfFail":[{"action":"end"}],
             "send":"wrongFacebookPassword"
         }
     ]

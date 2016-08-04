@@ -1,20 +1,24 @@
 {
-    "website":"amazon",
+    "website":"outlook",
     
     "urls":{
-        "login":"https://www.amazon.fr/gp/navigation/redirector.html/ref=sign-in-redirect?ie=UTF8&associationHandle=frflex&currentPageURL=https%3A%2F%2Fwww.amazon.fr%2F%3Fref_%3Dnav_custrec_signin&pageType=Gateway&yshURL=https%3A%2F%2Fwww.amazon.fr%2Fgp%2Fyourstore%2Fhome%3Fie%3DUTF8%26ref_%3Dnav_custrec_signin"
+        "login":"https://login.live.com/login.srf"
     },
     
     "elements":{
         
         "userField":{
-            "id":"ap_email"
+            "tagName":"input",
+            "type":"email",
+            "name":"loginfmt"
         },
         "passField":{
-            "id":"ap_password"
+            "tagName":"input",
+            "type":"password",
+            "name":"passwd"
         },
         "buttonLogIn":{
-            "id":"signInSubmit"
+            "id":"idSIButton9"
         }
         
     },
@@ -38,8 +42,16 @@
             "elements":[
                 {
                     "name":"userField",
+                    "action":"click"
+                },
+                {
+                    "name":"userField",
                     "action":"fill",
                     "value":"user"
+                },
+                {
+                    "name":"passField",
+                    "action":"click"
                 },
                 {
                     "name":"passField",

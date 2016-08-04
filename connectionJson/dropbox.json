@@ -1,20 +1,26 @@
 {
-    "website":"amazon",
+    "website":"dropbox",
     
     "urls":{
-        "login":"https://www.amazon.fr/gp/navigation/redirector.html/ref=sign-in-redirect?ie=UTF8&associationHandle=frflex&currentPageURL=https%3A%2F%2Fwww.amazon.fr%2F%3Fref_%3Dnav_custrec_signin&pageType=Gateway&yshURL=https%3A%2F%2Fwww.amazon.fr%2Fgp%2Fyourstore%2Fhome%3Fie%3DUTF8%26ref_%3Dnav_custrec_signin"
+        "login":"https://www.dropbox.com/fr/login"
     },
     
     "elements":{
         
         "userField":{
-            "id":"ap_email"
+            "tagName":"input",
+            "type":"email",
+            "name":"login_email"
         },
         "passField":{
-            "id":"ap_password"
+            "tagName":"input",
+            "type":"password",
+            "name":"login_password"
         },
         "buttonLogIn":{
-            "id":"signInSubmit"
+            "tagName":"button",
+            "type":"submit",
+            "className":"login-button button-primary"
         }
         
     },

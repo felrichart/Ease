@@ -16,7 +16,7 @@
         "buttonLogIn":{
             "tagName":"si pas d'ID, tagName obligatoire",
             "type":"autres paramètres facultatifs mais suffisamment pour décrire le champ de manière unique",
-            "name":"Attention, remplacer class par className."
+            "className":"Attention, remplacer class par className."
         }
         
     },
