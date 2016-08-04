@@ -60,6 +60,7 @@ function nextStep(tab, steps, params, i, callback){
             //En cas d'arrêt prématurée des étapes de connection.
             case "end":
                 endConnection(tab);
+                break;
         }
     } else {
         callback(tab);

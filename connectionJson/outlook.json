@@ -2,11 +2,12 @@
     "website":"outlook",
     
     "urls":{
-        "login":"https://login.live.com/login.srf"
+        "login":"https://login.live.com/login.srf?wa=wsignin1.0&wtrealm=urn:federation:MicrosoftOnline",
+        "home":"https://outlook.live.com/owa",
+        "normalLogin":"https://login.live.com/login.srf?wa=wsignin1.0&ct=1409066173&rver=6.1.6206.0&sa=1&ntprob=-1&wp=MBI_SSL_SHARED&wreply=https:%2F%2Fmail.live.com%2F%3Fowa%3D1%26owasuffix%3Dowa%252f&id=64855&snsc=1&cbcxt=mail"
     },
     
     "elements":{
-        
         "userField":{
             "tagName":"input",
             "type":"email",
@@ -33,7 +34,9 @@
                 "action":"catchFail",
                 "if":"missingElement",
                 "elementName":"passField",
-                "actionsIfFail":[{"action":"end"}],
+                "actionsIfFail":[
+                    {"action":"goTo", "url":"home", "lastPage":"true"},
+                    {"action":"end"}],
                 "send":"alreadyConnected"
         },
         
@@ -42,16 +45,8 @@
             "elements":[
                 {
                     "name":"userField",
-                    "action":"click"
-                },
-                {
-                    "name":"userField",
                     "action":"fill",
                     "value":"user"
-                },
-                {
-                    "name":"passField",
-                    "action":"click"
                 },
                 {
                     "name":"passField",
@@ -66,16 +61,23 @@
         },
         
         {
-            "action":"nextPage",
-            "lastPage":true
+            "action":"nextPage"
         },
         
         {
             "action":"catchFail",
             "if":"existingElement",
             "elementName":"passField",
-            "actionsIfFail":[{"action":"end"}],
+            "actionsIfFail":[
+                {"action":"goTo", "url":"normalLogin", "lastPage":true},
+                {"action":"end"}],
             "send":"wrongPassword"
+        },
+        
+        {
+            "action":"goTo",
+            "url":"home",
+            "lastPage":true
         }
     ]
 }
