@@ -41,7 +41,7 @@ function nextStep(tab, steps, params, i, callback){
                 break;
             case "nextPage"://dans le script navigate.js
                 nextPage(tab, step, params, function(newTab){
-                    nextStep(tab, steps, params, i+1, callback);
+                    nextStep(newTab, steps, params, i+1, callback);
                 });
                 break;
             case "catchFail"://dans le script catchFails.js
