@@ -1,25 +1,22 @@
 {
-    "website":"outlook",
+    "website":"gihub",
     
     "urls":{
-        "login":"https://login.live.com/login.srf?wa=wsignin1.0&wtrealm=urn:federation:MicrosoftOnline",
-        "home":"https://outlook.live.com/owa",
-        "normalLogin":"https://login.live.com/login.srf?wa=wsignin1.0&ct=1409066173&rver=6.1.6206.0&sa=1&ntprob=-1&wp=MBI_SSL_SHARED&wreply=https:%2F%2Fmail.live.com%2F%3Fowa%3D1%26owasuffix%3Dowa%252f&id=64855&snsc=1&cbcxt=mail"
+        "login":"https://github.com/login"
     },
     
     "elements":{
+        
         "userField":{
-            "tagName":"input",
-            "type":"email",
-            "name":"loginfmt"
+            "id":"login_field"
         },
         "passField":{
-            "tagName":"input",
-            "type":"password",
-            "name":"passwd"
+            "id":"password"
         },
         "buttonLogIn":{
-            "id":"idSIButton9"
+            "tagName":"input",
+            "type":"submit",
+            "name":"commit"
         }
         
     },
@@ -34,9 +31,7 @@
                 "action":"catchFail",
                 "if":"missingElement",
                 "elementName":"passField",
-                "actionsIfFail":[
-                    {"action":"goTo", "url":"home", "lastPage":true},
-                    {"action":"end"}],
+                "actionsIfFail":[{"action":"end"}],
                 "send":"alreadyConnected"
         },
         
@@ -61,23 +56,16 @@
         },
         
         {
-            "action":"nextPage"
+            "action":"nextPage",
+            "lastPage":true
         },
         
         {
             "action":"catchFail",
             "if":"existingElement",
             "elementName":"passField",
-            "actionsIfFail":[
-                {"action":"goTo", "url":"normalLogin", "lastPage":true},
-                {"action":"end"}],
+            "actionsIfFail":[{"action":"end"}],
             "send":"wrongPassword"
-        },
-        
-        {
-            "action":"goTo",
-            "url":"home",
-            "lastPage":true
         }
     ]
 }

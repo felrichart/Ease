@@ -2,7 +2,7 @@
 "manifest_version": 2,
     
 "name" :"Ease",
-"version" :"1.1.6",
+"version" :"1.1.8",
 "description" :"Ease extension, log you in and out",
     
 "icons": {
@@ -18,6 +18,10 @@
     {
       "matches": ["<all_urls>"],
       "js": ["easeListener.js"]
+    },
+    {
+      "matches": ["<all_urls>"],
+        "css": ["injectedScripts/overlay.css"]
     }
   ],
     
@@ -26,5 +30,15 @@
     "persistent": false
 },
     
-"permissions": ["tabs","cookies","\u003Call_urls\u003E","http://*/*", "https://*/*","webNavigation","storage"]
+"permissions": ["tabs","cookies","\u003Call_urls\u003E","http://*/*", "https://*/*","webNavigation","storage"],
+    
+"commands": {
+      "open-ease": {
+        "suggested_key": {
+          "default": "Ctrl+Space",
+          "mac": "Ctrl+Space"
+        },
+        "description": "Open Ease in a new tab"
+      }
+}
 }

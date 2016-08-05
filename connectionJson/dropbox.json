@@ -9,12 +9,10 @@
         
         "userField":{
             "tagName":"input",
-            "type":"email",
             "name":"login_email"
         },
         "passField":{
             "tagName":"input",
-            "type":"password",
             "name":"login_password"
         },
         "buttonLogIn":{

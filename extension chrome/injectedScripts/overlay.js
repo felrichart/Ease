@@ -1,14 +1,37 @@
+var imageUrl = "http://science-all.com/images/wallpaper/wallpaper-08.jpg";
+
 //div de l'overlay
 var overlay = document.createElement('div');
     overlay.id = "loading page ease";
-    overlay.style = "height: 100%;width: 100%;position: fixed;z-index: 2147483640;left: 0;top: 0;background-color:rgba(127,127,127, 0.9);overflow-x: hidden; visibility: visible;";
-var insideOverlay = document.createElement('div');
-    insideOverlay.style = "display:block;position: absolute;top: 50%; left: 50%;transform: translate(-50%,-50%); visibility: visible;";
-var image = document.createElement('img');
+    overlay.style = "background-image: url("+imageUrl+"); height: 100%;width: 100%;position: fixed;z-index: 2147483640;left: 0;top: 0;background-color:rgba(127,127,127, 1);overflow-x: hidden; visibility: visible;";
+var loading = document.createElement('div');
+    loading.className = "cs-loader";
+var loadingInner = document.createElement('div');
+    loadingInner.className = "cs-loader-inner";
+var ball1 = document.createElement('label');
+    ball1.innerHTML = " ●";
+var ball2 = document.createElement('label');
+    ball2.innerHTML = "	●";
+var ball3 = document.createElement('label');
+    ball3.innerHTML = "	●";
+var ball4 = document.createElement('label');
+    ball4.innerHTML = "	●";
+var ball5 = document.createElement('label');
+    ball5.innerHTML = "	●";
+var ball6 = document.createElement('label');
+    ball6.innerHTML = "	●";
+/*var image = document.createElement('img');
     image.src = "http://i.giphy.com/l46C731L5I8go6Zfq.gif";  //lien vers l'overlay
     image.style = "visibility: visible;";
-insideOverlay.appendChild(image);
-overlay.appendChild(insideOverlay);
+insideOverlay.appendChild(image);*/
+loadingInner.appendChild(ball1);
+loadingInner.appendChild(ball2);
+loadingInner.appendChild(ball3);
+loadingInner.appendChild(ball4);
+loadingInner.appendChild(ball5);
+loadingInner.appendChild(ball6);
+loading.appendChild(loadingInner);
+overlay.appendChild(loading);
 
 //insertion de la div si elle n'est pas là
 var alreadyHere = document.getElementById("loading page ease");

@@ -7,7 +7,8 @@
         <title>Ease app</title>
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-
+        
+        <link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/echjdhmhmgildgidlcdlepfkaledeokm">
 
         <script>
             
@@ -51,6 +52,18 @@
             });
             }
             
+            function installExtension(){
+                chrome.webstore.install("https://chrome.google.com/webstore/detail/echjdhmhmgildgidlcdlepfkaledeokm", successCallback, failureCallback);
+                
+                function successCallback(){
+                    console.log("gj");
+                }
+                
+                function failureCallback(fail){
+                    console.log(fail);
+                }
+            }
+            
             
         </script>
         
@@ -64,6 +77,10 @@
             Special connect: <input id="special" type="text" name="special"><br>
             Mail: <input id="mail" type="text" name="mail"><br>
             <button id="button" onclick="sendEvent()"> CONNEXION </button>
+        </div>
+        
+        <div>
+            <button id="download" onclick="installExtension()"> Installer Ease </button>
         </div>
         
 
